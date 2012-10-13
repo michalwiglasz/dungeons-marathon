@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="gr.polaris.blbecci"
+    package="gr.polaris"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -26,6 +26,14 @@
         <activity
             android:name="gr.polaris.activities.RoomsActivity"
             android:label="@string/title_activity_rooms" >
+            <meta-data
+            	android:name="android.support.PARENT_ACTIVITY"
+            	android:value="com.example.myfirstapp.MainActivity" 
+            />
+        </activity>
+        <activity
+            android:name="gr.polaris.activities.AwardsActivity"
+            android:label="@string/title_activity_awards" >
             <meta-data
             	android:name="android.support.PARENT_ACTIVITY"
             	android:value="com.example.myfirstapp.MainActivity" 
