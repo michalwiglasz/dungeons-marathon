@@ -1,4 +1,4 @@
-package gr.polaris.blbecek;
+package gr.polaris.model;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;

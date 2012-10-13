@@ -3,9 +3,9 @@ package gr.polaris.activities;
 import java.io.File;
 import java.util.List;
 
-import gr.polaris.blbecci.R;
-import gr.polaris.blbecek.ImageUpload;
+import gr.polaris.R;
 import gr.polaris.model.DataModel;
+import gr.polaris.model.ImageUpload;
 import gr.polaris.model.RoomsManager;
 import android.app.Activity;
 import android.content.Intent;
