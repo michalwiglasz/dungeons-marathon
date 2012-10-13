@@ -77,14 +77,19 @@ public abstract class BaseActivity extends Activity {
 			if (resultCode == RESULT_CANCELED)
 				return;
 			if (resultCode == RESULT_OK) {
+				if(fileUri == null)
+				{
+					Log.e(LOG_TAG, "fileUri us null!");
+					return;
+				}
 				// Toast t = Toast.makeText(getApplicationContext(),
 				// "Image saved to " + fileUri.getPath(), Toast.LENGTH_SHORT);
 				// t.show();
 				// Upload image on the server
 				// http://fit.mikita.eu/upload.php
 				// http://lugano.michalwiglasz.cz/maraton.txt
-				ImageUpload iu = new ImageUpload("http://lugano.michalwiglasz.cz:5000/img");
-				// ImageUpload iu = new ImageUpload("http://fit.mikita.eu/upload.php");
+				//ImageUpload iu = new ImageUpload("http://lugano.michalwiglasz.cz:5000/img");
+				ImageUpload iu = new ImageUpload("http://fit.mikita.eu/upload.php");
 				try {
 					iu.sendImage(fileUri.getPath());
 					String res = iu.getResponse(); 
@@ -108,11 +113,14 @@ public abstract class BaseActivity extends Activity {
 
 	public void checkRoom(String room) {
 		// TODO debug it...
-		TextView tv = (TextView) findViewById(R.id.main_text);
-		tv.setText("Found room: " + room);
-		if(true)
-			return;
+//		TextView tv = (TextView) findViewById(R.id.main_text);
+//		tv.setText("Found room: " + room);
+//		if(true)
+//			return;
+		// ~ TODO
 
+//		Log.i("checkRoom", "RoomA " + roomA + "; roomB " + roomB + ";  rom " + room);
+		
 		// Check unlocked room
 		if (!userData.hasUnlocked(room)) {
 			// TODO wrong image, play wrong sound
@@ -129,13 +137,14 @@ public abstract class BaseActivity extends Activity {
 			roomB = room;
 		}
 
+		Log.i("checkRoom", "RoomA " + roomA + "; roomB " + roomB + ";  rom "
+				+ room);
+		
 		// If first unlocked rooms, check only one room
 		if (userData.sizeUnlocked() != 1
 				&& (roomA.isEmpty() || roomB.isEmpty()))
 			return;
 
-		Log.i("checkRoom", "RoomA " + roomA + "; roomB " + roomB + ";  rom "
-				+ room);
 		// Check combination
 		List<String> res = rooms.tryPair(roomA, roomB);
 		if (res.isEmpty()) {
@@ -170,6 +179,7 @@ public abstract class BaseActivity extends Activity {
 		
 		// clear rooms
 		roomA = roomB = "";
+		Log.i(LOG_TAG, "roomA " + roomA + "; roomB " + roomB);
 	}
 
 	@Override

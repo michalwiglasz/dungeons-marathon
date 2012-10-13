@@ -125,7 +125,7 @@ public class RoomsManager {
           Item value=(Item)it.next();
           
           if((value.a.equals(first) && value.b.equals(second)) || (value.a.equals(second) && value.b.equals(first))) {
-        	  res = value.res;
+        	  res = (ArrayList<String>)value.res.clone();
         	  //((ArrayList<String>)res).add(value.description);
         	  res.add(value.description);
         	  break;
