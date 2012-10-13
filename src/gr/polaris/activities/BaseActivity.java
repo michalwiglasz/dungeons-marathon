@@ -19,6 +19,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public abstract class BaseActivity extends Activity {
+	
+	private static final String LOG_TAG = "BaseActivity";
+	
 	protected Uri fileUri;
 	protected static final int SCAN_IMAGE_REQUEST_CODE = 101;
 
