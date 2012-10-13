@@ -24,8 +24,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BagActivity"
-            android:label="@string/title_activity_photo" >
+            android:name=".RoomsActivity"
+            android:label="@string/title_activity_rooms" >
             <meta-data
             	android:name="android.support.PARENT_ACTIVITY"
             	android:value="com.example.myfirstapp.MainActivity" 

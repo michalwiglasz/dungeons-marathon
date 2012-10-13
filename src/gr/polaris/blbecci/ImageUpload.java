@@ -2,12 +2,9 @@ package gr.polaris.blbecci;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -26,6 +23,7 @@ import android.util.Log;
 public class ImageUpload implements Runnable {
 	
 	private static final String LOG_TAG = "ImageUpload"; 
+	private static final int MAX_BUFFER_SIZE = 20*1024;	// 20 KiB
 
 	private URL serverUrl;
 	private String response;
@@ -87,7 +85,7 @@ public class ImageUpload implements Runnable {
 			dos.writeBytes("image=");
 			// create a buffer of maximum size
 			int maxSize = ba1.length();
-			int maxBufferSize = 10*1024;	// 10KiB
+			int maxBufferSize = MAX_BUFFER_SIZE;
 			Log.i(LOG_TAG, "Size of string: " + String.valueOf(maxSize));
 			
 			int bufferSize = Math.min(maxSize, maxBufferSize);

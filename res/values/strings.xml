@@ -3,10 +3,10 @@
     <string name="app_name">Blbecci</string>
     <string name="hello_world">Hello world! MIKI</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">Main</string>
     <string name="menu_scan">Scan</string>
-    <string name="menu_bag">Bag</string>
-    <string name="menu_achievements">Awards</string>
-    <string name="title_activity_photo">PhotoActivity</string>
+    <string name="menu_rooms">Rooms</string>
+    <string name="menu_awards">Awards</string>
+    <string name="title_activity_rooms">Rooms</string>
 
 </resources>

@@ -1,4 +1,4 @@
-package gr.polaris.blbecci;
+ï»¿package gr.polaris.blbecci;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -56,22 +56,22 @@ public class RoomsManager {
 		
 		
 		awards = new ArrayList<Award>();
-		awards.add(new Award("Kontrarozvìdka", "Od doby co jsi poznal všechny skryté uivatele fitušky Tì nic nemùe pøekvapit. Fórum se pro Tebe zase stalo hostinnım prostøedím.", Arrays.asList("C234")));
-		awards.add(new Award("Profesor", "Objevil jsi celı areál FIT! Katedra \"samoèinnıch poèítaèù\" byla do areálu Boetìchova 2 pøesunuta z elektrotechnické fakulty na Antonínská 1 (dnešní rektorát VUT) v roce 1968.", Arrays.asList("A003", "A204", "A205", "A308", "C008", "C109", "C114", "C204", "C206", "C215", "C216", "C226", "C232", "C234", "D0206", "D0207", "D105", "E104", "E105", "E106", "E112", "F120", "G108", "H1", "J105", "L022", "L104", "L125", "L129", "L205", "L221.1", "L221.2", "L224", "L322", "L333", "L335", "L339", "M209", "P108", "P209", "S202")));
-		awards.add(new Award("Docent", "Objevil jsi vše v budovì Boetìchova 1. FIT se o tyto prostory rozšíøil v roce 2006. Stavba nové budovy spolu s rekontrukcí kláštera stála 700mil. kè.", Arrays.asList("L022", "L104", "L125", "L129", "L205", "L221.1", "L221.2", "L224", "L322", "L333", "L335", "L339", "M209", "P108", "P209", "S202")));
-		awards.add(new Award("Renesanèní osobnost", "Prokázal jsi heroické schopnosti, kdy jsi pochopil všechny vìdomosti FITu. K tomu Ti dopomohlo objevení všech vedoucích jednotlivıch ústavù.", Arrays.asList("C226", "A205", "L322", "L221.2")));
-		awards.add(new Award("Znalı svìta", "Program ERASMUS Ti rozšíøil obzory.", Arrays.asList("F120")));
-		awards.add(new Award("Apatie k budoucímu studiu", "Po dùkladném prozkoumání areálu jsi zjistit, e bıt doktorantem nemusí bıt zrovna med.", Arrays.asList("L205")));
-		awards.add(new Award("Sympatie k budoucímu studiu", "Objevil jsi všechna místa, kde se dá na fakultì sehnat medicína, která vyøeší všechny Tvé problémy.", Arrays.asList("P108", "E106", "C008", "A003")));
-		awards.add(new Award("Zelenáè", "Jsi na správné cestì. Ve své sbírce máš druhého prodìkana.", Arrays.asList("L333")));
+		awards.add(new Award("KontrarozvÃ¬dka", "Od doby co jsi poznal vÅ¡echny skrytÃ© uÅ¾ivatele fituÅ¡ky TÃ¬ nic nemÃ¹Å¾e pÃ¸ekvapit. FÃ³rum se pro Tebe zase stalo hostinnÃ½m prostÃ¸edÃ­m.", Arrays.asList("C234")));
+		awards.add(new Award("Profesor", "Objevil jsi celÃ½ areÃ¡l FIT! Katedra \"samoÃ¨innÃ½ch poÃ¨Ã­taÃ¨Ã¹\" byla do areÃ¡lu BoÅ¾etÃ¬chova 2 pÃ¸esunuta z elektrotechnickÃ© fakulty na AntonÃ­nskÃ¡ 1 (dneÅ¡nÃ­ rektorÃ¡t VUT) v roce 1968.", Arrays.asList("A003", "A204", "A205", "A308", "C008", "C109", "C114", "C204", "C206", "C215", "C216", "C226", "C232", "C234", "D0206", "D0207", "D105", "E104", "E105", "E106", "E112", "F120", "G108", "H1", "J105", "L022", "L104", "L125", "L129", "L205", "L221.1", "L221.2", "L224", "L322", "L333", "L335", "L339", "M209", "P108", "P209", "S202")));
+		awards.add(new Award("Docent", "Objevil jsi vÅ¡e v budovÃ¬ BoÅ¾etÃ¬chova 1. FIT se o tyto prostory rozÅ¡Ã­Ã¸il v roce 2006. Stavba novÃ© budovy spolu s rekontrukcÃ­ klÃ¡Å¡tera stÃ¡la 700mil. kÃ¨.", Arrays.asList("L022", "L104", "L125", "L129", "L205", "L221.1", "L221.2", "L224", "L322", "L333", "L335", "L339", "M209", "P108", "P209", "S202")));
+		awards.add(new Award("RenesanÃ¨nÃ­ osobnost", "ProkÃ¡zal jsi heroickÃ© schopnosti, kdyÅ¾ jsi pochopil vÅ¡echny vÃ¬domosti FITu. K tomu Ti dopomohlo objevenÃ­ vÅ¡ech vedoucÃ­ch jednotlivÃ½ch ÃºstavÃ¹.", Arrays.asList("C226", "A205", "L322", "L221.2")));
+		awards.add(new Award("ZnalÃ½ svÃ¬ta", "Program ERASMUS Ti rozÅ¡Ã­Ã¸il obzory.", Arrays.asList("F120")));
+		awards.add(new Award("Apatie k budoucÃ­mu studiu", "Po dÃ¹kladnÃ©m prozkoumÃ¡nÃ­ areÃ¡lu jsi zjistit, Å¾e bÃ½t doktorantem nemusÃ­ bÃ½t zrovna med.", Arrays.asList("L205")));
+		awards.add(new Award("Sympatie k budoucÃ­mu studiu", "Objevil jsi vÅ¡echna mÃ­sta, kde se dÃ¡ na fakultÃ¬ sehnat medicÃ­na, kterÃ¡ vyÃ¸eÅ¡Ã­ vÅ¡echny TvÃ© problÃ©my.", Arrays.asList("P108", "E106", "C008", "A003")));
+		awards.add(new Award("ZelenÃ¡Ã¨", "Jsi na sprÃ¡vnÃ© cestÃ¬. Ve svÃ© sbÃ­rce mÃ¡Å¡ druhÃ©ho prodÃ¬kana.", Arrays.asList("L333")));
 		
 	
 		
 		rooms = new ArrayList<Room>();
-		rooms.add(new Room("A003", "Sklep", "Sklepní místnost v podzemí FIT. Je pøístupná pouze z podzemní chodby, která spojuje obì budovy areálu FIT.")); //dalsi?
-		rooms.add(new Room("A204", "Doc. Zboøil", "Zástupce vedoucího UITS."));
-		rooms.add(new Room("A205", "Doc. Hanáèek", "Vedoucí UITS. "));
-		rooms.add(new Room("A308", "Dr. Køena", "Prodìkan pro bakaláøské studium. Pro zajímavoust pracovna A308 obsahuje postel."));
+		rooms.add(new Room("A003", "Sklep", "SklepnÃ­ mÃ­stnost v podzemÃ­ FIT. Je pÅ™Ã­stupnÃ¡ pouze z podzemnÃ­ chodby, kterÃ¡ spojuje obÄ› budovy areÃ¡lu FIT.")); //dalsi?
+		rooms.add(new Room("A204", "Doc. ZboÅ™il", "ZÃ¡stupce vedoucÃ­ho UITS."));
+		rooms.add(new Room("A205", "Doc. HanÃ¡Äek", "VedoucÃ­ UITS. "));
+		rooms.add(new Room("A308", "Dr. KÅ™ena", "ProdÄ›kan pro bakalÃ¡Å™skÃ© studium. Pro zajÃ­mavoust pracovna A308 obsahuje postel."));
 		rooms.add(new Room("C008", "", ""));
 		rooms.add(new Room("C109", "", ""));
 		rooms.add(new Room("C114", "", ""));
@@ -115,10 +115,10 @@ public class RoomsManager {
 	public List<String> tryPair(String first, String second) {
 		List<String> res = (List<String>) new ArrayList<String>();
 		
-		Iterator it=data.iterator();
+		Iterator<Item> it=data.iterator();
         while(it.hasNext())
         {
-          Item value=(Item)it.next();
+          Item value=it.next();
           
           if((value.a == first && value.b == second) || (value.a == second && value.b == first)) {
         	  res = value.res;
@@ -137,10 +137,10 @@ public class RoomsManager {
 		
 		boolean res = false;
 
-		Iterator it=awards.iterator();
+		Iterator<Award> it=awards.iterator();
         while(it.hasNext())
         {
-    		Award award=(Award)it.next();
+    		Award award=it.next();
     		List<String> unlocked = model.getUnlockedRooms();
     		
     		//if is awarded
@@ -154,18 +154,18 @@ public class RoomsManager {
 	
 	
 	public void test() {
-        Iterator it=data.iterator();
+        Iterator<Item> it=data.iterator();
     	int i = 0;
         
         while(it.hasNext())
         {
-          Item value=(Item)it.next();
+          Item value=it.next();
 
           System.out.print(i + ". "+value.a+" "+value.b+" (");
           
-          Iterator it2=value.res.iterator();
+          Iterator<String> it2=value.res.iterator();
           while(it2.hasNext()) {
-        	  String value2 = (String)it2.next();
+        	  String value2 = it2.next();
         	  
         	  System.out.print(value2+", ");
           }
@@ -173,18 +173,4 @@ public class RoomsManager {
           System.out.println(")");
         }
 	}
-	
-	
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		
-		RoomsManager rm = new RoomsManager();
-		//rm.test();
-		
-		// TODO Auto-generated method stub
-		//System.out.println("sere mì to, jojo - a hodnì");
-	}
-
 }

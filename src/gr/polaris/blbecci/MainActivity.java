@@ -1,8 +1,7 @@
 package gr.polaris.blbecci;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.util.List;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -26,6 +25,7 @@ public class MainActivity extends Activity {
 	private String roomB;
 
 	public static DataModel userData;
+	public static RoomsManager rooms;
 
 	/**
 	 * Check and return proper folder for Application (will be created)
@@ -103,17 +103,32 @@ public class MainActivity extends Activity {
 		if (!userData.hasUnlocked(room)) {
 			// TODO wrong image, play wrong sound
 			Toast t = Toast.makeText(getApplicationContext(),
-					"The room is not unlocked!", Toast.LENGTH_LONG);
+					"The room " + room + " is not unlocked!", Toast.LENGTH_LONG);
 			t.show();
 			return;
 		}
 
 		// Selected first or second room?
-		if (roomA.isEmpty())
+		if (roomA.isEmpty()) {
 			roomA = room;
-		else {
+		} else {
 			roomB = room;
-			// Check 
+		}
+		
+		// If first unlocked rooms, check only one room
+		if(userData.sizeUnlocked() != 1 && (roomA.isEmpty() || roomB.isEmpty()))
+			return;
+		
+		// Check combination
+		List<String> res = rooms.tryPair(roomA, roomB);
+		if (res.isEmpty()) {
+			// TODO wrong image, play wrong sound
+			Toast t = Toast.makeText(getApplicationContext(),
+					"The combination is not allowed", Toast.LENGTH_LONG);
+			t.show();
+			// clear rooms
+			roomA = roomB = "";
+			return;
 		}
 
 		Toast t = Toast.makeText(getApplicationContext(), room,
@@ -130,13 +145,26 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		userData = new DataModel();
+		rooms = new RoomsManager();
 
 		setContentView(R.layout.activity_main);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.activity_main, menu);
+		getMenuInflater().inflate(R.menu.all_activities, menu);
 		return true;
+	}
+
+	public void showRoomsActivity(View view)
+	{
+		Intent i = new Intent(this, RoomsActivity.class);
+		startActivity(i);
+	}
+	
+	public void showAwardsActivity(View view)
+	{
+		Intent i = new Intent(this, RoomsActivity.class);
+		startActivity(i);
 	}
 }

@@ -59,6 +59,11 @@ public class DataModel {
 		return unlockedRooms.contains(room);
 	}
 	
+	public int sizeUnlocked()
+	{
+		return unlockedRooms.size();
+	}
+	
 	/**
 	 * Add award for the user
 	 * @param award		Name of award

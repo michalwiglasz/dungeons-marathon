@@ -1,7 +1,5 @@
 package gr.polaris.blbecci;
 
-import java.util.List;
-
 public class Room {
 	public String name;
 	public String person;
