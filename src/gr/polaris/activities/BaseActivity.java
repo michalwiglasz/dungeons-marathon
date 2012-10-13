@@ -19,15 +19,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public abstract class BaseActivity extends Activity {
-	
+
 	private static final String LOG_TAG = "BaseActivity";
-	
+
 	protected Uri fileUri;
 	protected static final int SCAN_IMAGE_REQUEST_CODE = 101;
 
 	public static DataModel userData;
 	public static RoomsManager rooms;
-	
+
 	protected String roomA;
 	protected String roomB;
 
@@ -83,22 +83,19 @@ public abstract class BaseActivity extends Activity {
 				// Upload image on the server
 				// http://fit.mikita.eu/upload.php
 				// http://lugano.michalwiglasz.cz/maraton.txt
-				// ImageUpload iu = new
-				//ImageUpload iu = new ImageUpload("http://lugano.michalwiglasz.cz:5000/img");
-				ImageUpload iu = new ImageUpload("http://fit.mikita.eu/upload.php");
-				try
-				{
-				iu.sendImage(fileUri.getPath());
-				// TODO wrong image, play wrong sound
-				if (iu.getResponse().isEmpty()) {
-					Toast t = Toast.makeText(getApplicationContext(),
-							"Image was not recognized", Toast.LENGTH_LONG);
-					t.show();
-					return;
-				}
-				}
-				catch(RuntimeException e)
-				{
+				ImageUpload iu = new ImageUpload("http://lugano.michalwiglasz.cz:5000/img");
+				// ImageUpload iu = new ImageUpload("http://fit.mikita.eu/upload.php");
+				try {
+					iu.sendImage(fileUri.getPath());
+					String res = iu.getResponse(); 
+					// TODO wrong image, play wrong sound
+					if (res == null || res.isEmpty() || res.equals("???")) {
+						Toast t = Toast.makeText(getApplicationContext(),
+								"Image was not recognized", Toast.LENGTH_LONG);
+						t.show();
+						return;
+					}
+				} catch (RuntimeException e) {
 					Log.e(LOG_TAG, "Runtime exception: " + e.getMessage(), e);
 					return;
 				}
@@ -110,27 +107,35 @@ public abstract class BaseActivity extends Activity {
 	}
 
 	public void checkRoom(String room) {
+		// TODO debug it...
+		TextView tv = (TextView) findViewById(R.id.main_text);
+		tv.setText("Found room: " + room);
+		if(true)
+			return;
+
 		// Check unlocked room
 		if (!userData.hasUnlocked(room)) {
 			// TODO wrong image, play wrong sound
-			Toast t = Toast.makeText(getApplicationContext(),
-					"The room " + room + " is not unlocked!", Toast.LENGTH_LONG);
+			Toast t = Toast.makeText(getApplicationContext(), "The room "
+					+ room + " is not unlocked!", Toast.LENGTH_LONG);
 			t.show();
 			return;
 		}
-
+		
 		// Selected first or second room?
 		if (roomA.isEmpty()) {
 			roomA = room;
 		} else {
 			roomB = room;
 		}
-		
+
 		// If first unlocked rooms, check only one room
-		if(userData.sizeUnlocked() != 1 && (roomA.isEmpty() || roomB.isEmpty()))
+		if (userData.sizeUnlocked() != 1
+				&& (roomA.isEmpty() || roomB.isEmpty()))
 			return;
-		
-		Log.i("checkRoom", "RoomA " + roomA + "; roomB " + roomB + ";  rom " + room);
+
+		Log.i("checkRoom", "RoomA " + roomA + "; roomB " + roomB + ";  rom "
+				+ room);
 		// Check combination
 		List<String> res = rooms.tryPair(roomA, roomB);
 		if (res.isEmpty()) {
@@ -142,18 +147,29 @@ public abstract class BaseActivity extends Activity {
 			roomA = roomB = "";
 			return;
 		}
-		for(String s : res)
-		{
+		// Last String is description for combination (will be showed)
+		Log.i(LOG_TAG, "Found pair for rooms " + roomA + "-" + roomB);
+		String desc = res.get(res.size()-1);
+		// remove last string from array
+		res.remove(res.size()-1);
+		Log.i(LOG_TAG, "Desc " + desc);
+		String rooms = "Unlocked rooms: ";
+		// For each string, add unlocked room
+		for (String s : res) {
 			userData.addUnlocked(s);
+			rooms += s + ", ";
 		}
-
-		Toast t = Toast.makeText(getApplicationContext(), room,
+// ((ArrayList<String>) rooms).;
+		// Show rooms
+		Toast t = Toast.makeText(getApplicationContext(), rooms,
 				Toast.LENGTH_LONG);
 		t.show();
-
-		TextView tv = (TextView) findViewById(R.id.main_text);
-		tv.setText(room);
-
+		Log.i(LOG_TAG, rooms);
+		TextView tv2 = (TextView) findViewById(R.id.main_text);
+		tv2.setText(rooms + "\r\n\r\n" + desc);
+		
+		// clear rooms
+		roomA = roomB = "";
 	}
 
 	@Override
@@ -162,14 +178,12 @@ public abstract class BaseActivity extends Activity {
 		return true;
 	}
 
-	public void showRoomsActivity(View view)
-	{
+	public void showRoomsActivity(View view) {
 		Intent i = new Intent(this, RoomsActivity.class);
 		startActivity(i);
 	}
-	
-	public void showAwardsActivity(View view)
-	{
+
+	public void showAwardsActivity(View view) {
 		Intent i = new Intent(this, RoomsActivity.class);
 		startActivity(i);
 	}

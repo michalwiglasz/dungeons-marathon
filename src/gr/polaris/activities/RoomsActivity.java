@@ -1,11 +1,7 @@
 package gr.polaris.activities;
 
 import gr.polaris.R;
-import gr.polaris.R.layout;
-import gr.polaris.R.menu;
 import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
 
 public class RoomsActivity extends BaseActivity {
 

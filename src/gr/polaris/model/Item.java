@@ -1,17 +1,19 @@
 package gr.polaris.model;
 
-import java.util.List;
+import java.util.ArrayList;
 
 
 public class Item {
 	public String a;
 	public String b;
-	public List<String> res;
+	public ArrayList<String> res;
+	public String description;
 	
-	public Item(String A, String B, List<String>Res) {
+	public Item(String A, String B, ArrayList<String> Res, String des) {
 		a = A;
 		b = B;
 		res = Res;
+		description = des;
 	}
 }
 
