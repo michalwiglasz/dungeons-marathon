@@ -81,4 +81,13 @@ public class DataModel {
 	{
 		return awards.contains(award);
 	}
+	
+	/**
+	 * Return list of user unlocked rooms
+	 * @return ArrayList<String>
+	 */
+	public ArrayList<String> getUnlockedRooms()
+	{
+		return unlockedRooms;
+	}
 }

@@ -1,13 +1,20 @@
 package gr.polaris.blbecci;
 
+import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.util.Log;
 
 /**
@@ -22,23 +29,19 @@ public class ImageUpload implements Runnable {
 
 	private URL serverUrl;
 	private String response;
-	private String title;
-	private String description;
-	private FileInputStream image;
+	private String image;
 	
-	public ImageUpload(String url, String title, String desc)
+	public ImageUpload(String url)
 	{
 		try {
 			this.serverUrl = new URL(url);
-			this.title = title;
-			this.description = desc;
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			Log.e(LOG_TAG, e.getLocalizedMessage());
 		}
 	}
 	
-	public void sendImage(FileInputStream fStream)
+	public void sendImage(String fStream)
 	{
 		image = fStream;
 		run();
@@ -46,11 +49,6 @@ public class ImageUpload implements Runnable {
 	
 	public void run()
 	{
-		String fName = "image.jpg";
-		String LE = "\r\n";
-		String hypens = "--";
-		String boundary = "***" + fName + "***";
-		
 		try
 		{
 			// Open a HTTP connection
@@ -63,53 +61,52 @@ public class ImageUpload implements Runnable {
 			conn.setUseCaches(false);
 			// Use a post method
 			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Connection", "Keep-Alive");
-			conn.setRequestProperty("Connection-Type", "image/jpeg");
-			conn.setRequestProperty("Connection-Transfer-Encoding", "binary");
 			
-			// Write image to the website output stream
+			// @source http://blog.sptechnolab.com/2011/03/09/android/android-upload-image-to-server/
+			Log.i(LOG_TAG, "Decoding image from file");
+			Bitmap im = BitmapFactory.decodeStream( new FileInputStream(image) );
+			ByteArrayOutputStream bao = new ByteArrayOutputStream();
+			Log.i(LOG_TAG, "Compressing JPEG format");
+			im.compress(Bitmap.CompressFormat.JPEG, 70, bao);
+			//File f = new File(image + ".compress.jpg");
+			//FileOutputStream fos = new FileOutputStream(f);
+			byte [] ba = bao.toByteArray();
+			//fos.write(ba);
+			//fos.close();
+			Log.i(LOG_TAG, "Encoding JPEG format");
+			String ba1=Base64.encodeToString(ba, Base64.DEFAULT);
+			//f = new File(image + ".base64.jpg");
+			//DataOutputStream dfs = new DataOutputStream(new FileOutputStream(f));
+			//dfs.writeBytes(ba1);
+			//dfs.close();
+			
+			Log.i(LOG_TAG, "Sending string content to server");
+			
+			// Write image to the websites output stream
 			DataOutputStream dos = new DataOutputStream(conn.getOutputStream());
-			// - Title
-			//dos.writeBytes(hypens + boundary + LE);
-			//dos.writeBytes("Content-Disposition: form-data; name=\"title\"" + LE);
-			//dos.writeBytes(LE + this.title + LE);
-			//dos.writeBytes(hypens + boundary + LE);
-			// - Description
-			//dos.writeBytes("Content-Disposition: form-data; name=\"description\"" + LE);
-			//dos.writeBytes(LE + this.description + LE);
-			/*
-			dos.writeBytes(hypens + boundary + LE);
-			// - image data
-			dos.writeBytes("Content-Disposition: form-data; name=\"uploadedimage\";filename=\""+fName+"\"" + LE);
-			dos.writeBytes("Content-Type: image/jpeg" + LE);
-			dos.writeBytes("Content-Transfer-Encoding: binary" + LE);
-			dos.writeBytes(LE);
-			*/
-			//dos.writeBytes("image" + LE + LE);
+			dos.writeBytes("image=");
 			// create a buffer of maximum size
-			int bytesAvailable = image.available();
-			int maxBufferSize = 1024;
-			int bufferSize = Math.min(bytesAvailable, maxBufferSize);
+			int maxSize = ba1.length();
+			int maxBufferSize = 10*1024;	// 10KiB
+			Log.i(LOG_TAG, "Size of string: " + String.valueOf(maxSize));
 			
-			byte[] buffer = new byte[bufferSize];
+			int bufferSize = Math.min(maxSize, maxBufferSize);
 			
-			// Read bytes from file and write it into form...
-			int bytesRead = image.read(buffer, 0, bufferSize);
-			while(bytesRead > 0)
+			// Read bytes from string and write it into server output...
+			//ba1.substring(start, end)
+			int i = 0;
+			do
 			{
-				dos.write(buffer, 0, bufferSize);
-				bytesAvailable = image.available();
-				bufferSize = Math.min(bytesAvailable, maxBufferSize);
-				bytesRead = image.read(buffer, 0, bufferSize);
-			}
-			
+				dos.writeBytes(ba1.substring(i, i + bufferSize));
+				dos.flush();
+				i += bufferSize;
+				bufferSize = Math.min(maxSize - i, maxBufferSize);
+				Log.i(LOG_TAG, "i "+String.valueOf(i) + "; bufferSize "+String.valueOf(bufferSize));
+				//Log.i(LOG_TAG, " "+String.valueOf(i) + "; bufferSize "+String.valueOf(bufferSize));
+			} while(i < maxSize);
 			//dos.writeBytes(LE);
-			
-			//dos.writeBytes(hypens + boundary + hypens + LE);
-			
-			// close streams
-			image.close();
-			dos.flush();
+			dos.close();
+			Log.i(LOG_TAG, "Finished");
 			
 			// Read response
 			Log.i(LOG_TAG, "Response from server: " + String.valueOf(conn.getResponseCode()));
@@ -120,7 +117,7 @@ public class ImageUpload implements Runnable {
 			StringBuffer b = new StringBuffer();
 			while( (ch = is.read()) != -1) { b.append( (char)ch); }
 			this.response = b.toString();
-			dos.close();
+			conn.disconnect();
 			
 		}
 		catch(MalformedURLException ex)
