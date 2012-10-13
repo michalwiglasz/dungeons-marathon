@@ -1,0 +1,54 @@
+<LinearLayout android:id="@+id/container"
+     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     android:orientation="vertical"
+    >
+    
+       <!--   android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" -->
+    <TextView
+        android:id="@+id/main_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_world"
+        />
+    
+
+<LinearLayout android:id="@+id/footer"
+     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     android:orientation="horizontal"
+     style="@android:style/ButtonBar">
+
+    
+    <Button android:id="@+id/scanButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_weight="1"
+        android:layout_gravity="bottom"
+        android:text="@string/menu_scan"
+        android:onClick="scanImage"
+	/>
+
+    <Button android:id="@+id/bagButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="bottom"
+        android:text="@string/menu_bag"
+    />
+    
+    <Button android:id="@+id/achievementsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="bottom"
+        android:text="@string/menu_achievements"
+    />
+</LinearLayout>
+
+</LinearLayout>
