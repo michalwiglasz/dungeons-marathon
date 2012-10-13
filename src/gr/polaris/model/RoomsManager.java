@@ -1,11 +1,16 @@
 package gr.polaris.model;
 
+import gr.polaris.R;
+import gr.polaris.application.BlbecekApp;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Arrays;
 
 
-public class RoomsManager {
+public class RoomsManager 
+{
+  private BlbecekApp app;
 	//private ArrayList<ArrayList<String> > data;
 /*	
 	private String test[][][] = {{{"L224"}, {""}, {"E106", "A308", "C215", "L129"}},
@@ -16,7 +21,9 @@ public class RoomsManager {
 	ArrayList<Award> awards;
 	ArrayList<Room> rooms;
 	
-	public RoomsManager() {
+	public RoomsManager(BlbecekApp context)
+	{
+	  app = context;
 /*	
 		data = new ArrayList<ArrayList<String> >();
 		
@@ -28,6 +35,8 @@ public class RoomsManager {
 		System.out.println(data.get(0).get(0));
 */		
 		
+	  // app.getString(R.string.room_);
+	  
 		//test read
 		data = new ArrayList<Item>();
 		

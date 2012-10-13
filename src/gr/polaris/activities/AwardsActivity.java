@@ -2,12 +2,18 @@ package gr.polaris.activities;
 
 import gr.polaris.R;
 import android.os.Bundle;
+import android.util.Log;
 
-public class AwardsActivity extends BaseActivity {
+public class AwardsActivity extends BaseActivity
+{
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_awards);
-    }
+  private static final String LOG_TAG = "AwardsActivity";
+
+  @Override
+  public void onCreate(Bundle savedInstanceState)
+  {
+    Log.i(LOG_TAG, "onCreate");
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_awards);
+  }
 }

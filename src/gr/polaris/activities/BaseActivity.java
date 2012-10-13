@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import gr.polaris.R;
+import gr.polaris.application.BlbecekApp;
 import gr.polaris.model.DataModel;
 import gr.polaris.model.ImageUpload;
 import gr.polaris.model.RoomsManager;
@@ -18,183 +19,246 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public abstract class BaseActivity extends Activity {
+/**
+ * 
+ * @author MIKI
+ * 
+ */
+public abstract class BaseActivity extends Activity
+{
 
-	private static final String LOG_TAG = "BaseActivity";
+  private static final String LOG_TAG                 = "BaseActivity";
 
-	protected Uri fileUri;
-	protected static final int SCAN_IMAGE_REQUEST_CODE = 101;
+  protected static final int  SCAN_IMAGE_REQUEST_CODE = 101;
 
-	public static DataModel userData;
-	public static RoomsManager rooms;
+  /**
+   * Check and return proper folder for Application (will be created)
+   * 
+   * @return
+   */
+  protected File getAppFolder()
+  {
+    File dir = new File(
+      Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Blbecci");
+    if (dir.exists())
+      return dir;
 
-	protected String roomA;
-	protected String roomB;
+    if (!dir.mkdirs())
+    {
+      Log.e(LOG_TAG, "failed to create directory");
+      return null;
+    }
+    return dir;
+  }
 
-	/**
-	 * Check and return proper folder for Application (will be created)
-	 * 
-	 * @return
-	 */
-	protected File getAppFolder() {
-		File dir = new File(
-				Environment
-						.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
-				"Blbecci");
-		if (dir.exists())
-			return dir;
+  /**
+   * Get Uri for image file
+   * 
+   * @return
+   */
+  protected Uri getImageFileUri()
+  {
+    // Check directory
+    File dir = new File(getAppFolder().getPath() + File.separator + "last_scan.jpg");
+    return Uri.fromFile(dir);
+  }
 
-		if (!dir.mkdirs()) {
-			Log.e(LOG_TAG, "failed to create directory");
-			return null;
-		}
-		return dir;
-	}
+  @Override
+  /**
+   * 
+   */
+  protected void onActivityResult(int requestCode, int resultCode, Intent data)
+  {
+    if (requestCode == SCAN_IMAGE_REQUEST_CODE)
+    {
+      if (resultCode == RESULT_CANCELED)
+        return;
+      if (resultCode == RESULT_OK)
+      {
+        if (((BlbecekApp) getApplication()).fileUri == null)
+        {
+          Log.e(LOG_TAG, "fileUri us null!");
+          return;
+        }
+        // Toast t = Toast.makeText(getApplicationContext(),
+        // "Image saved to " + fileUri.getPath(), Toast.LENGTH_SHORT);
+        // t.show();
+        // Upload image on the server
+        // http://fit.mikita.eu/upload.php
+        // http://lugano.michalwiglasz.cz/maraton.txt
+        // ImageUpload iu = new
+        // ImageUpload("http://lugano.michalwiglasz.cz:5000/img");
+        ImageUpload iu = new ImageUpload("http://fit.mikita.eu/upload.php");
+        try
+        {
+          iu.sendImage(((BlbecekApp) getApplication()).fileUri.getPath());
+          String res = iu.getResponse();
+          // TODO wrong image, play wrong sound
+          if (res == null || res.isEmpty() || res.equals("???"))
+          {
+            Toast t = Toast.makeText(getApplicationContext(), "Image was not recognized",
+              Toast.LENGTH_LONG);
+            t.show();
+            return;
+          }
+        } catch (RuntimeException e)
+        {
+          Log.e(LOG_TAG, "Runtime exception: " + e.getMessage(), e);
+          return;
+        }
 
-	protected Uri getImageFileUri() {
-		// Check directory
-		File dir = new File(getAppFolder().getPath() + File.separator
-				+ "last_scan.jpg");
-		return Uri.fromFile(dir);
-	}
+        checkRoom(iu.getResponse());
 
-	/**
-	 * Start PhotoActivity to scan image file
-	 * 
-	 * @param view
-	 */
-	public void scanImage(View view) {
-		Intent in = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-		fileUri = getImageFileUri();
-		in.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
+      }
+    }
+  }
 
-		startActivityForResult(in, SCAN_IMAGE_REQUEST_CODE);
-	}
+  public void checkRoom(String room)
+  {
+    BlbecekApp app = (BlbecekApp) getApplication();
+    TextView tvd = (TextView) findViewById(R.id.text_desc);
 
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (requestCode == SCAN_IMAGE_REQUEST_CODE) {
-			if (resultCode == RESULT_CANCELED)
-				return;
-			if (resultCode == RESULT_OK) {
-				if(fileUri == null)
-				{
-					Log.e(LOG_TAG, "fileUri us null!");
-					return;
-				}
-				// Toast t = Toast.makeText(getApplicationContext(),
-				// "Image saved to " + fileUri.getPath(), Toast.LENGTH_SHORT);
-				// t.show();
-				// Upload image on the server
-				// http://fit.mikita.eu/upload.php
-				// http://lugano.michalwiglasz.cz/maraton.txt
-				//ImageUpload iu = new ImageUpload("http://lugano.michalwiglasz.cz:5000/img");
-				ImageUpload iu = new ImageUpload("http://fit.mikita.eu/upload.php");
-				try {
-					iu.sendImage(fileUri.getPath());
-					String res = iu.getResponse(); 
-					// TODO wrong image, play wrong sound
-					if (res == null || res.isEmpty() || res.equals("???")) {
-						Toast t = Toast.makeText(getApplicationContext(),
-								"Image was not recognized", Toast.LENGTH_LONG);
-						t.show();
-						return;
-					}
-				} catch (RuntimeException e) {
-					Log.e(LOG_TAG, "Runtime exception: " + e.getMessage(), e);
-					return;
-				}
+    // TODO debug it...
+    // TextView tv = (TextView) findViewById(R.id.main_text);
+    // tv.setText("Found room: " + room);
+    // if(true)
+    // return;
+    // ~ TODO
 
-				checkRoom(iu.getResponse());
+    Log.i("checkRoom", "RoomA " + app.roomA + "; roomB " + app.roomB + ";  rom " + room);
 
-			}
-		}
-	}
+    // Check unlocked room
+    if (!app.userData.hasUnlocked(room))
+    {
+      // TODO wrong image, play wrong sound
+      Toast t = Toast.makeText(getApplicationContext(), "The room " + room + " is not unlocked!",
+        Toast.LENGTH_LONG);
+      tvd.setText("The room " + room + " is not unlocked!");
+      t.show();
+      return;
+    }
 
-	public void checkRoom(String room) {
-		// TODO debug it...
-//		TextView tv = (TextView) findViewById(R.id.main_text);
-//		tv.setText("Found room: " + room);
-//		if(true)
-//			return;
-		// ~ TODO
+    TextView tv;
+    // Selected first or second room?
+    if (app.roomA.isEmpty())
+    {
+      app.roomA = room;
+      tv = (TextView) findViewById(R.id.text_roomA);
 
-//		Log.i("checkRoom", "RoomA " + roomA + "; roomB " + roomB + ";  rom " + room);
-		
-		// Check unlocked room
-		if (!userData.hasUnlocked(room)) {
-			// TODO wrong image, play wrong sound
-			Toast t = Toast.makeText(getApplicationContext(), "The room "
-					+ room + " is not unlocked!", Toast.LENGTH_LONG);
-			t.show();
-			return;
-		}
-		
-		// Selected first or second room?
-		if (roomA.isEmpty()) {
-			roomA = room;
-		} else {
-			roomB = room;
-		}
+    }
+    else
+    {
+      app.roomB = room;
+      tv = (TextView) findViewById(R.id.text_roomB);
+    }
+    tv.append(room);
 
-		Log.i("checkRoom", "RoomA " + roomA + "; roomB " + roomB + ";  rom "
-				+ room);
-		
-		// If first unlocked rooms, check only one room
-		if (userData.sizeUnlocked() != 1
-				&& (roomA.isEmpty() || roomB.isEmpty()))
-			return;
+    Log.i("checkRoom", "RoomA " + app.roomA + "; roomB " + app.roomB + ";  rom " + room);
 
-		// Check combination
-		List<String> res = rooms.tryPair(roomA, roomB);
-		if (res.isEmpty()) {
-			// TODO wrong image, play wrong sound
-			Toast t = Toast.makeText(getApplicationContext(),
-					"The combination is not allowed", Toast.LENGTH_LONG);
-			t.show();
-			// clear rooms
-			roomA = roomB = "";
-			return;
-		}
-		// Last String is description for combination (will be showed)
-		Log.i(LOG_TAG, "Found pair for rooms " + roomA + "-" + roomB);
-		String desc = res.get(res.size()-1);
-		// remove last string from array
-		res.remove(res.size()-1);
-		Log.i(LOG_TAG, "Desc " + desc);
-		String rooms = "Unlocked rooms: ";
-		// For each string, add unlocked room
-		for (String s : res) {
-			userData.addUnlocked(s);
-			rooms += s + ", ";
-		}
-// ((ArrayList<String>) rooms).;
-		// Show rooms
-		Toast t = Toast.makeText(getApplicationContext(), rooms,
-				Toast.LENGTH_LONG);
-		t.show();
-		Log.i(LOG_TAG, rooms);
-		TextView tv2 = (TextView) findViewById(R.id.main_text);
-		tv2.setText(rooms + "\r\n\r\n" + desc);
-		
-		// clear rooms
-		roomA = roomB = "";
-		Log.i(LOG_TAG, "roomA " + roomA + "; roomB " + roomB);
-	}
+    // If first unlocked rooms, check only one room
+    if (app.userData.sizeUnlocked() != 1 && (app.roomA.isEmpty() || app.roomB.isEmpty()))
+      return;
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.all_activities, menu);
-		return true;
-	}
+    // Check combination
+    List<String> res = app.rooms.tryPair(app.roomA, app.roomB);
+    if (res.isEmpty())
+    {
+      // TODO wrong image, play wrong sound
+      Toast t = Toast.makeText(getApplicationContext(), "The combination is not allowed",
+        Toast.LENGTH_LONG);
+      t.show();
+    }
+    else
+    {
+      // Last String is description for combination (will be showed)
+      Log.i(LOG_TAG, "Found pair for rooms " + app.roomA + "-" + app.roomB);
+      String desc = res.get(res.size() - 1);
+      // remove last string from array
+      res.remove(res.size() - 1);
+      Log.i(LOG_TAG, "Desc " + desc);
+      String rooms = "Unlocked rooms: ";
+      // For each string, add unlocked room
+      for (String s : res)
+      {
+        app.userData.addUnlocked(s);
+        rooms += s + ", ";
+      }
+      // ((ArrayList<String>) rooms).;
+      // Show rooms
+      Toast t = Toast.makeText(getApplicationContext(), rooms, Toast.LENGTH_LONG);
+      t.show();
+      Log.i(LOG_TAG, rooms);
+      tv = (TextView) findViewById(R.id.text_desc);
+      tv.setText(rooms + "\r\n\r\n" + desc);
+    }
 
-	public void showRoomsActivity(View view) {
-		Intent i = new Intent(this, RoomsActivity.class);
-		startActivity(i);
-	}
+    // clear rooms
+    app.roomA = app.roomB = "";
+    ((TextView) findViewById(R.id.text_roomA)).setText(getString(R.string.main_roomA));
+    ((TextView) findViewById(R.id.text_roomB)).setText("Second room: ");
 
-	public void showAwardsActivity(View view) {
-		Intent i = new Intent(this, RoomsActivity.class);
-		startActivity(i);
-	}
+    Log.i(LOG_TAG, "roomA " + app.roomA + "; roomB " + app.roomB);
+  }
+
+  /**
+   * Create common options menu
+   */
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu)
+  {
+    getMenuInflater().inflate(R.menu.all_activities, menu);
+    return true;
+  }
+
+  /**
+   * Start Camera to scan image file
+   * 
+   * @param view
+   */
+  public void scanImage(View view)
+  {
+    BlbecekApp app = (BlbecekApp) getApplication();
+    Intent in = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+    app.fileUri = getImageFileUri();
+    in.putExtra(MediaStore.EXTRA_OUTPUT, app.fileUri);
+
+    startActivityForResult(in, SCAN_IMAGE_REQUEST_CODE);
+  }
+
+  /**
+   * Show rooms Activity
+   */
+  public void showRoomsActivity(View view)
+  {
+    Intent i = new Intent(this, RoomsActivity.class);
+    // i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+    // Intent.FLAG_ACTIVITY_SINGLE_TOP);
+    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    startActivity(i);
+  }
+
+  /**
+   * Show awards Activity
+   */
+  public void showAwardsActivity(View view)
+  {
+    Intent i = new Intent(this, AwardsActivity.class);
+    // i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+    // Intent.FLAG_ACTIVITY_SINGLE_TOP);
+    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    startActivity(i);
+  }
+
+  /**
+   * Show main Activity
+   */
+  public void showMainActivity(View view)
+  {
+    Intent i = new Intent(this, MainActivity.class);
+    // i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+    // Intent.FLAG_ACTIVITY_SINGLE_TOP);
+    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    startActivity(i);
+    // i.
+  }
 }
