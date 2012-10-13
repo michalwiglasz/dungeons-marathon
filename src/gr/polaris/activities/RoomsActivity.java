@@ -1,5 +1,8 @@
-package gr.polaris.blbecci;
+package gr.polaris.activities;
 
+import gr.polaris.blbecci.R;
+import gr.polaris.blbecci.R.layout;
+import gr.polaris.blbecci.R.menu;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;

@@ -1,4 +1,4 @@
-package gr.polaris.blbecci;
+package gr.polaris.model;
 
 public class Room {
 	public String name;

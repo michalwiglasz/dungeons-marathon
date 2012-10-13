@@ -1,4 +1,4 @@
-package gr.polaris.blbecci;
+package gr.polaris.model;
 
 import java.util.List;
 

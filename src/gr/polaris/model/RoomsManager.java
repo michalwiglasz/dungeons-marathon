@@ -1,4 +1,4 @@
-﻿package gr.polaris.blbecci;
+﻿package gr.polaris.model;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -120,7 +120,7 @@ public class RoomsManager {
         {
           Item value=it.next();
           
-          if((value.a == first && value.b == second) || (value.a == second && value.b == first)) {
+          if((value.a.equals(first) && value.b.equals(second)) || (value.a.equals(second) && value.b.equals(first))) {
         	  res = value.res;
         	  break;
           }

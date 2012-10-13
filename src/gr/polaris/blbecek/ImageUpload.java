@@ -1,8 +1,9 @@
-package gr.polaris.blbecci;
+package gr.polaris.blbecek;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -23,7 +24,7 @@ import android.util.Log;
 public class ImageUpload implements Runnable {
 	
 	private static final String LOG_TAG = "ImageUpload"; 
-	private static final int MAX_BUFFER_SIZE = 20*1024;	// 20 KiB
+	private static final int MAX_BUFFER_SIZE = 40*1024;	// 20 KiB
 
 	private URL serverUrl;
 	private String response;
@@ -59,20 +60,22 @@ public class ImageUpload implements Runnable {
 			conn.setUseCaches(false);
 			// Use a post method
 			conn.setRequestMethod("POST");
+			conn.setRequestProperty("Accept-Charset", "UTF-8");
+			conn.setRequestProperty("Content-Type", "image/jpeg");
 			
 			// @source http://blog.sptechnolab.com/2011/03/09/android/android-upload-image-to-server/
 			Log.i(LOG_TAG, "Decoding image from file");
 			Bitmap im = BitmapFactory.decodeStream( new FileInputStream(image) );
 			ByteArrayOutputStream bao = new ByteArrayOutputStream();
 			Log.i(LOG_TAG, "Compressing JPEG format");
-			im.compress(Bitmap.CompressFormat.JPEG, 70, bao);
+			im.compress(Bitmap.CompressFormat.JPEG, 90, bao);
 			//File f = new File(image + ".compress.jpg");
 			//FileOutputStream fos = new FileOutputStream(f);
 			byte [] ba = bao.toByteArray();
 			//fos.write(ba);
 			//fos.close();
 			Log.i(LOG_TAG, "Encoding JPEG format");
-			String ba1=Base64.encodeToString(ba, Base64.DEFAULT);
+			// String ba1=Base64.encodeToString(ba, Base64.NO_WRAP);
 			//f = new File(image + ".base64.jpg");
 			//DataOutputStream dfs = new DataOutputStream(new FileOutputStream(f));
 			//dfs.writeBytes(ba1);
@@ -82,9 +85,9 @@ public class ImageUpload implements Runnable {
 			
 			// Write image to the websites output stream
 			DataOutputStream dos = new DataOutputStream(conn.getOutputStream());
-			dos.writeBytes("image=");
+			//dos.writeBytes("image=");
 			// create a buffer of maximum size
-			int maxSize = ba1.length();
+			int maxSize = ba.length;
 			int maxBufferSize = MAX_BUFFER_SIZE;
 			Log.i(LOG_TAG, "Size of string: " + String.valueOf(maxSize));
 			
@@ -95,7 +98,7 @@ public class ImageUpload implements Runnable {
 			int i = 0;
 			do
 			{
-				dos.writeBytes(ba1.substring(i, i + bufferSize));
+				dos.write(ba, i, bufferSize);
 				dos.flush();
 				i += bufferSize;
 				bufferSize = Math.min(maxSize - i, maxBufferSize);
@@ -106,27 +109,57 @@ public class ImageUpload implements Runnable {
 			dos.close();
 			Log.i(LOG_TAG, "Finished");
 			
-			// Read response
-			Log.i(LOG_TAG, "Response from server: " + String.valueOf(conn.getResponseCode()));
-			
-			InputStream is = conn.getInputStream();
-			// retrieve the response from server
-			int ch;
-			StringBuffer b = new StringBuffer();
-			while( (ch = is.read()) != -1) { b.append( (char)ch); }
-			this.response = b.toString();
-			conn.disconnect();
+			try
+			{
+				// Read response
+				Log.i(LOG_TAG, "Response from server: " + String.valueOf(conn.getResponseCode()));
+				if(conn.getResponseCode() != 200)
+				{
+					Log.e(LOG_TAG, "Wrong response code!");
+					conn.disconnect();
+					return;
+				}
+				InputStream is = conn.getInputStream();
+				// retrieve the response from server
+				int ch;
+				StringBuffer b = new StringBuffer();
+				while( (ch = is.read()) != -1) { b.append( (char)ch); }
+				this.response = b.toString();
+				conn.disconnect();
+			}
+			catch(FileNotFoundException e)
+			{
+				Log.e(LOG_TAG, "Exception: " + e.getMessage(), e);
+			}
 			
 		}
 		catch(MalformedURLException ex)
 		{
-			Log.e(LOG_TAG, ex.getLocalizedMessage(), ex);
+			Log.e(LOG_TAG, ex.getMessage(), ex);
 		}
 		catch(IOException ex)
 		{
 			Log.e(LOG_TAG, ex.getLocalizedMessage(), ex);
 		}
 	}
+	
+//	public void run()
+//	{
+//		//try
+//		//{
+//			Log.i(LOG_TAG, "Decoding image from file");
+//			Bitmap im = BitmapFactory.decodeStream( new FileInputStream(image) );
+//			ByteArrayOutputStream bao = new ByteArrayOutputStream();
+//			Log.i(LOG_TAG, "Compressing JPEG format");
+//			im.compress(Bitmap.CompressFormat.JPEG, 70, bao);
+//			//File f = new File(image + ".compress.jpg");
+//			//FileOutputStream fos = new FileOutputStream(f);
+//			byte [] ba = bao.toByteArray();
+//			
+//			// HttpClient hc = new DefaultHttpClient();
+//			
+//		}
+//	}
 	
 	public String getResponse()
 	{

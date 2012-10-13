@@ -1,4 +1,12 @@
-package gr.polaris.blbecci;
+package gr.polaris.activities;
+
+import gr.polaris.blbecci.R;
+import gr.polaris.blbecci.R.id;
+import gr.polaris.blbecci.R.layout;
+import gr.polaris.blbecci.R.menu;
+import gr.polaris.blbecek.ImageUpload;
+import gr.polaris.model.DataModel;
+import gr.polaris.model.RoomsManager;
 
 import java.io.File;
 import java.util.List;
@@ -80,15 +88,22 @@ public class MainActivity extends Activity {
 				// http://fit.mikita.eu/upload.php
 				// http://lugano.michalwiglasz.cz/maraton.txt
 				// ImageUpload iu = new
-				// ImageUpload("http://lugano.michalwiglasz.cz/maraton.txt");
-				ImageUpload iu = new ImageUpload(
-						"http://fit.mikita.eu/upload.php");
+				//ImageUpload iu = new ImageUpload("http://lugano.michalwiglasz.cz:5000/img");
+				ImageUpload iu = new ImageUpload("http://fit.mikita.eu/upload.php");
+				try
+				{
 				iu.sendImage(fileUri.getPath());
 				// TODO wrong image, play wrong sound
 				if (iu.getResponse().isEmpty()) {
 					Toast t = Toast.makeText(getApplicationContext(),
 							"Image was not recognized", Toast.LENGTH_LONG);
 					t.show();
+					return;
+				}
+				}
+				catch(RuntimeException e)
+				{
+					Log.e(LOG_TAG, "Runtime exception: " + e.getMessage(), e);
 					return;
 				}
 
@@ -119,6 +134,7 @@ public class MainActivity extends Activity {
 		if(userData.sizeUnlocked() != 1 && (roomA.isEmpty() || roomB.isEmpty()))
 			return;
 		
+		Log.i("checkRoom", "RoomA " + roomA + "; roomB " + roomB + ";  rom " + room);
 		// Check combination
 		List<String> res = rooms.tryPair(roomA, roomB);
 		if (res.isEmpty()) {
@@ -129,6 +145,10 @@ public class MainActivity extends Activity {
 			// clear rooms
 			roomA = roomB = "";
 			return;
+		}
+		for(String s : res)
+		{
+			userData.addUnlocked(s);
 		}
 
 		Toast t = Toast.makeText(getApplicationContext(), room,
@@ -142,12 +162,23 @@ public class MainActivity extends Activity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		
+		try{
+			
 		super.onCreate(savedInstanceState);
 
 		userData = new DataModel();
 		rooms = new RoomsManager();
+		roomA = roomB = "";
 
 		setContentView(R.layout.activity_main);
+		}
+		catch(Exception e)
+		{
+
+			Toast t = Toast.makeText(getApplicationContext(), "Unexpected error, try again.", Toast.LENGTH_LONG);
+			t.show();
+		}
 	}
 
 	@Override
