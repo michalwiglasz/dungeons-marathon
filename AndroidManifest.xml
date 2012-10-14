@@ -20,6 +20,7 @@
         <activity
             android:name="gr.polaris.activities.MainActivity"
             android:label="@string/title_activity_main"
+            android:configChanges="locale"
             android:launchMode="singleTop" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,6 +31,7 @@
         <activity
             android:name="gr.polaris.activities.RoomsActivity"
             android:label="@string/title_activity_rooms"
+            android:configChanges="locale"
             android:launchMode="singleTop" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -38,6 +40,7 @@
         <activity
             android:name="gr.polaris.activities.AwardsActivity"
             android:label="@string/title_activity_awards"
+            android:configChanges="locale"
             android:launchMode="singleTop" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

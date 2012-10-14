@@ -1,0 +1,165 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <string name="app_name">Dummass</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_scan">Scan</string>
+    <string name="menu_main">Home</string>
+    <string name="menu_rooms">Rooms</string>
+    <string name="menu_awards">Achievements</string>
+    <string name="title_activity_main">Dummass</string>
+    <string name="title_activity_rooms">Rooms</string>
+    <string name="title_activity_awards">Achievements</string>
+    <!-- Main Activity texts -->
+    <string name="main_roomA">First room: </string>
+    <string name="main_roomB">Second room: </string>
+    <!-- Rooms Activity texts -->
+    <string name="rooms_subtitle">Unlocked rooms:</string>
+    <string name="awards_subtitle">Your achievements:</string>
+    <string name="buttonOk">OK</string>
+    <string name="restart_text">Your profil was changed</string>
+
+    <!-- Data function descriptions -->
+    <string name="L224">Doc. Herout came up with the idea of marathons and thus he also build the foundations of our game.</string>
+    <string name="E106A308">Bachelors (taken care of by vice-dean Křena) are promoted to higher status (\"handled\"by vice-dean Růžička) with the presency of the insignia, often in hands of Mr Juřiček.</string>
+    <string name="L333E106">Masters (taken care of by vice-dean Růžička) are promoted to higher status (\"handled\"by vice-dean Hruška) with the presency of the insignia, often in hands of Mr Juřiček.</string>
+    <string name="C232C215">Current dean and ex-dean together represent the function of the Dean.</string>
+    <string name="C215C204">Researcher who is also the Dean has the power to promote his favourite colleagues to vice-dean posts.</string>
+    <string name="C204C206">Faculty administrator is authorization on trusteeship by dean.</string>
+    <string name="S202L221_1">Vice-dean Zemčík can solve any international problem. Together with doc. Drahanský they can indeed comunicate even with (South?) Corea. Anyway, most of the time you must go to Ing. Studená\'s office.</string>
+    <string name="P209L104">Average food from school canteen and our cafeteria is enough for you? Then you will definitely love our (closed) restaurant</string>
+    <string name="D105E112">Both large lecture rooms wouldn\'t be as awesome without the perfectly (not) working streaming and recording system, which allows to watch lectures from the warm dormitory. With beer. And with video running on double speed. And with sound turned off. And you don\'t even have to wear pants! Thanks to Mgr. Skokanová who\'s keeping her eye on these tiny little devices.</string>
+    <string name="L125D105">Streaming can be used to connect larger lecture room D105 with smaller rooms D0206 and D0207.</string>
+    <string name="L125E112">Streaming allows to connect room E112 and smaller E104. Before this semester started, we were even able to connect the other smaller room E105. The investigation of the problem still persists.</string>
+    <string name="L129L125">Video streaming required video servers and communikation between employes of CVT.</string>
+    <string name="L129L022">Lots of servers. Lots of employers keeping their eyes on them. This is how we run the ComputerW centre.</string>
+    <string name="G108L224">Invitation from doc. Herout to a cup of cofee inside the beautiful conference room G108 is another kind of offer you can\'t refuse (even Deputy Deans can\'t).</string>
+    <string name="P108C216">Every Deputy Head of departmen has became Head of departmen in case that he spent much of time with influential people in restaurants.</string>
+    <string name="P108A204">Every Deputy Head of departmen has became Head of departmen in case that he spent much of time with influential people in restaurants.</string>
+    <string name="P108L335">Every Deputy Head of departmen has became Head of departmen in case that he spent much of time with influential people in restaurants.</string>
+    <string name="P108L224">Every Deputy Head of departmen has became Head of departmen in case that he spent much of time with influential people in restaurants.</string>
+    <string name="L221_2C232">Vice-dean for Ph.D study and head of DCGM together convinced dozen of Ph.D. students to live in one office.</string>
+    <string name="C232C216">Prof. Meduna and vice-Dean Hruška cooperating with Petr \"S3rvác\" Zemek.</string>
+    <string name="C216C114">Professor Meduna uses literature from library and he recites poetry in wine room or basement every semester.</string>
+    <string name="M209L224">When doc. Herout organized marathons in CVT it\'s surprising that no one student doesn\'t need mortuary for the long term period.</string>
+    <string name="P209L205">In cafeteria they are coocking excelent waste from butcher.</string>
+    <string name="C226A308">Doc. Kolář and Dr. Křena together send many students to Student\'s affairs or in worst case to mortuary, every year.</string>
+    <string name="C109F120">When student can\'t solves his issues at student\'s affairs neither at Mgr. Studená he has to do terminate decision - meet with Ing. Eysselt.</string>
+
+    <!-- Awards Activity texts -->
+    <string name="Kontrarozvědka_desc">After you discovered all hidden Fituška users nothing can surprise you. Except Chuck Norris.</string>
+    <string name="Profesor_desc">You have discovored the whole FIT campus! The departement of autonomic computers moved to this place from the Faculty of electrical engineering at Antonínská 1 (today\'s university rectorate)</string>
+    <string name="Docent_desc">You have discovered everything in the glass building. It was built in 2006 and it cost 700 milions crowns, including the reconstruction of the monastery.</string>
+    <string name="Renesanční_osobnost_desc">You have proved your heroic powers by understanding everything about FIT. I guess discovering all of the heads of departements helped you a bit.</string>
+    <string name="Znalý_světa_desc">The ERASMUS program opened your eyes and mind.</string>
+    <string name="Apatie_k_budoucímu_studiu_desc">After you searched the whole campus, you realised that it is not easy to be a PhD student.</string>
+    <string name="Sympatie_k_budoucímu_studiu_desc">You have discovered all places where you can get that kind of medicine which can solve all human problems.</string>
+    <string name="Zelenáč_desc">You are on the right way. You have collected second Vice-dean.</string>
+    
+    
+    <!-- Awards Names -->
+    <string name="Kontrarozvědka">Counterintelligence</string>
+    <string name="Profesor">Professor</string>
+    <string name="Docent">Asociate Professor</string>
+    <string name="Renesanční_osobnost">Renaissance human</string>
+    <string name="Znalý_světa">Know the World</string>
+    <string name="Apatie_k_budoucímu_studiu">Apathy to future studies</string>
+    <string name="Sympatie_k_budoucímu_studiu">Sympathy to future studies</string>
+    <string name="Zelenáč">Rockie</string>
+    
+    
+    <!-- Room names -->
+    <string name="A003N">Basement</string>
+    <string name="A204N">Doc. Zbořil</string>
+    <string name="A205N">Doc. Hanáček</string>
+    <string name="A308N">Dr. Křena</string>
+    <string name="C008N">Tavern</string> 
+    <string name="C109N">Student\'s affairs</string> 
+    <string name="C114N">Library</string>
+    <string name="C204N">Dean office</string>
+    <string name="C206N">Ing. Bouša</string>
+    <string name="C215N">Doc. Zendulka</string>
+    <string name="C216N">Prof. Meduna</string>
+    <string name="C226N">Doc. Kolář</string>
+    <string name="C232N">Prof. Hruška</string>
+    <string name="C234N">Ing. Zemek</string>
+    <string name="D0206N">Lecture room</string>
+    <string name="D0207N">Lecture room</string>
+    <string name="D105N">Lecture room</string>
+    <string name="E104N">Lecture room</string>
+    <string name="E105N">Lecture room</string>
+    <string name="E106N">Pan Juřiček</string>
+    <string name="E112N">Lecture room</string>
+    <string name="F120N">Ing. Studená</string>
+    <string name="G108N">Conference room</string>
+    <string name="H1N">Mortuary</string>
+    <string name="J105N">Waste</string>
+    <string name="L022N">Server room</string>
+    <string name="L104N">Café</string>
+    <string name="L125N">Mgr. Skokanová</string>
+    <string name="L129N">Ing. Lampa</string>
+    <string name="L205N">Butcher</string>
+    <string name="L221_1N">Doc. Zemčík</string>
+    <string name="L221_2N">Doc. Černocký</string>
+    <string name="L224N">Doc. Herout</string>
+    <string name="L322N">Doc. Kotásek</string>
+    <string name="L333N">Doc. Růžička</string>
+    <string name="L335N">Prof. Sekanina</string>
+    <string name="L339N">Ing. Eysselt</string>
+    <string name="M209N">CVT reception</string>
+    <string name="P108N">Restaurant</string>
+    <string name="P209N">Dining room</string>
+    <string name="S202N">Doc. Drahanský</string>    
+    
+    <!-- Room desc -->
+    <string name="A003D">Underground cellar room. It\'s accesible only by underground corrdor which connect both buildings.</string>
+    <string name="A204D">Deputy Head of DITS.</string>
+    <string name="A205D">Head of DITS. </string>
+    <string name="A308D">Vice-dean for Bc. education. By the way office A308 contains bed.</string>
+    
+    <string name="C008D">The precence of wine wasn\'t prove, yet.</string> 
+    <string name="C109D">Can\'t see, can\'t hear and I don\'t know.</string> 
+    <string name="C114D">Library with books.</string>
+    <string name="C204D">Dean\'s office, hush!</string>
+    <string name="C206D">Faculty administrator</string>
+    <string name="C215D">Dean of FIT</string>
+    <string name="C216D">Deputy Head DIFS.</string>
+    <string name="C226D">Head of DIFS</string>
+    <string name="C232D">Vice-dean for research and Ph.D. study.</string>
+    <string name="C234D">S3rvác</string>
+    <string name="D0206D">Deepest lecture room at FIT for 90 students.</string>
+    <string name="D0207D">Deepest lecture room at FIT for 154 students.</string>
+    <string name="D105D">The biggest lecture room at FIT for 300 students.</string>
+    <string name="E104D">Lectute room for 72 students.</string>
+    <string name="E105D">Lectute room for 72 students.</string>
+    
+    <string name="E106D">Works of all kinds from morning till night.</string>
+    <string name="E112D">The oldest lecrute room at FIT for 156 students.</string>
+    <string name="F120D">International department</string>    
+    <string name="G108D">Conference room G108 is the prettiest one at FIT. There is a big oval table inside. The ceiling of room is ornamented with baroque vault.</string>
+    <string name="H1D">Contemporary mortuary</string>
+    <string name="J105D">Nobody know anythink about this waste.</string>
+        
+    <string name="L022D">After reconstruction in 2012 the server room can established cooling and emergency battery power for computers down to 90kW. It currently contains about 1150 computation cores.</string>
+    <string name="L104D">Students and researchers loves that place.</string>
+    <string name="L125D">Streaming a videorecording.</string>
+    <string name="L129D">Network Manager of FIT.</string>
+    <string name="L205D">Ph.D student there showing regularly heroic duty. Because of absence of place in this room (only 40m2) they have to live together in the number of 14 people. Secondary solution is that there is a miunderstanding in IS FIT.</string>
+    <string name="L221_1D">Vice-dean for external relations.</string>
+    <string name="L221_2D">Head of DCGM.</string>
+    <string name="L224D">Deputy Head of DCGM.</string>
+    <string name="L322D">Head of UPSY.</string>
+    <string name="L333D">Vice-dean for Mgr. education.</string>
+    <string name="L335D">Deputy Head of DCSY.</string>
+    <string name="L339D">Student advisor. Some Czech letters: á, Á, é, É, ě, Ě, í, Í, ó, ú, Ú, ů, Ů, ý, Ý, č, Č, ď, ň, ř, Ř, š, Š, ť, ž, Ž.</string>
+    <string name="M209D">You shall not pass without slippers!</string>  
+    <string name="P108D">From the first of September 2012 is restaurant Old Brewery closed because of unknown reason.</string>
+    <string name="P209D">Foods of unchristian quality for unchristian prices. Price of one meal in student\'s canteen is counted with equation C = (c - d + 29) * 1.2 + 0.49 CZK, where c are costs of foodstuffs and d is grant (17,45 CZK).</string>
+    <string name="S202D">Coordinator of foreign mobility.</string>  
+                    
+    <string-array name="langs_array">
+        <item>English EN</item>
+        <item>Czech CS</item>
+    </string-array>
+    <string name="pick_language">Choose your language</string>
+                   
+</resources>

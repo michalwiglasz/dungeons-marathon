@@ -20,15 +20,18 @@ public class RoomView extends LinearLayout
     name = new TextView(context);
     name.setText(room.name);
     name.setTextSize(18);
-    name.setLineSpacing(8, 2);
+    //name.setLineSpacing(8, 2);
+    name.setPadding(5, 5, 15, 10);
     name.setTextColor(Color.BLACK);
     
     person = new TextView(context);
     person.setText(room.person);
     person.setTextSize(16);
-    person.setLineSpacing(8, 2);
+    //person.setLineSpacing(8, 2);
+    person.setPadding(10, 5, 15, 10);
     person.setTextColor(Color.BLACK);
     
+    addView(name);
     addView(person);
   }
 

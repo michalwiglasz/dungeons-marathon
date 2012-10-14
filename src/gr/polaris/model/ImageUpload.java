@@ -11,7 +11,6 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -32,9 +31,9 @@ public class ImageUpload implements Runnable
   private URL                      serverUrl;
   private String                   response;
   private String                   image;
-
-  private static ArrayList<String> res;
-  private static int               i;
+//
+//  private static ArrayList<String> res;
+//  private static int               i;
 
   public ImageUpload(BlbecekApp context, String url)
   {

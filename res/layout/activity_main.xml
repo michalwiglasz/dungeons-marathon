@@ -14,19 +14,22 @@
         android:id="@+id/text_roomA"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"  />
+        android:textSize="25sp" 
+        android:padding="20px" />
 
     <TextView
         android:id="@+id/text_roomB"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"  />
+        android:textSize="25sp" 
+        android:padding="20px" />
 
     <TextView
         android:id="@+id/text_desc"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"  />
+        android:textSize="20sp"
+        android:padding="15px"  />
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"

@@ -14,6 +14,7 @@ public class DataModel
   public DataModel(RoomsManager rm)
   {
     unlockedRooms = new ArrayList<Room>();
+    unlockedRoomsString = new ArrayList<String>();
     awards = new ArrayList<String>();
     this.rm = rm;    
     init();
@@ -28,7 +29,7 @@ public class DataModel
     addUnlocked("L224"); // Herout
     addUnlocked("C215");
     addUnlocked("C204");
-    addUnlocked("A208"); // Herout
+    addUnlocked("A308"); // Herout
     addUnlocked("L333"); // Herout
     addUnlocked("L129"); // Herout
     addUnlocked("C216"); // Herout

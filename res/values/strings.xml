@@ -1,7 +1,8 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <string name="app_name">Blbeček</string>
-    <string name="menu_settings">Nastavení</string>
+    <string name="menu_languages">Jazyky</string>
+    <string name="menu_restart">Restart profilu</string>
     <string name="menu_scan">Sken</string>
     <string name="menu_main">Domů</string>
     <string name="menu_rooms">Místnosti</string>
@@ -14,8 +15,10 @@
     <string name="main_roomB">Druhá místnost: </string>
     <!-- Rooms Activity texts -->
     <string name="rooms_subtitle">Odemčené místnosti:</string>
-    <!-- Rooms Activity texts -->
+    <!-- Awards Activity texts -->
     <string name="awards_subtitle">Získaná ocenění:</string>
+    <string name="buttonOk">OK</string>
+    <string name="restart_text">Tvuj profil byl zresetovan</string>
     
     <!-- Data function descriptions -->
     <string name="L224">Doc. Herout stvořil maraton a proto vytváří i základní stavební kameny naší hry.</string>
@@ -43,16 +46,26 @@
     <string name="P209L205">Naše menza umí spolu se vstupem z masokombinátu často vyprodukovat velmi kvalitní odpad.</string>
     <string name="C226A308">Doc. Kolář společně s Dr. Křenou se každoročně postarají o to, že mnoho studentů musí vyhledávat návštěvy studijního oddělení a myslet přitom na márnici.</string>
     <string name="C109F120">Ve chvíli kdy studentovi FIT nevyhoví studijní oddělení ani Mgr. Studená zbývá terminální možnost a to návštěva Ing. Eysselta.</string>
-
+    
+    <!-- Awards Names -->
+    <string name="Kontrarozvědka">Kontrarozvědka</string>
+    <string name="Profesor">Profesor</string>
+    <string name="Docent">Docent</string>
+    <string name="Renesanční_osobnost">Renesanční osobnost</string>
+    <string name="Znalý_světa">Znalý světa</string>
+    <string name="Apatie_k_budoucímu_studiu">Apatie k budoucímu studiu</string>
+    <string name="Sympatie_k_budoucímu_studiu">Sympatie k budoucímu studiu</string>
+    <string name="Zelenáč">Zelenáč</string>
+	
     <!-- Awards Activity texts -->
-    <string name="Kontrarozvědka">Od doby co jsi poznal všechny skryté uživatele fitušky Tě nic nemůže překvapit. Fórum se pro Tebe zase stalo hostinným prostředím.</string>
-    <string name="Profesor">Objevil jsi celý areál FIT! Katedra \"samočinných počítačů\" byla do areálu Božetěchova 2 přesunuta z elektrotechnické fakulty na Antonínská 1 (dnešní rektorát VUT) v roce 1968 (objekt získalo VUT v roce 1963 ve značně zchátralém stavu). Dnes je celková užitná plocha 17 280m2 z toho výuková 12 323m2. Celkem je v posluchárnách na fakultě 880 míst.</string>
-    <string name="Docent">Objevil jsi vše v budově Božetěchova 1. FIT se o tyto prostory rozšířil v roce 2006. Stavba nové budovy spolu s rekontrukcí kláštera stála 700mil. kč.</string>
-    <string name="Renesanční_osobnost">Prokázal jsi heroické schopnosti, když jsi pochopil všechny vědomosti FITu. K tomu Ti dopomohlo objevení všech vedoucích jednotlivých ústavů.</string>
-    <string name="Znalý_světa">Program ERASMUS Ti rozšířil obzory.</string>
-    <string name="Apatie_k_budoucímu_studiu">Po důkladném prozkoumání areálu jsi zjistit, že být doktorantem nemusí být zrovna med.</string>
-    <string name="Sympatie_k_budoucímu_studiu">Objevil jsi všechna místa, kde se dá na fakultě sehnat medicína, která vyřeší všechny Tvé problémy.</string>
-    <string name="Zelenáč">Jsi na správné cestě. Ve své sbírce máš druhého proděkana.</string>
+    <string name="Kontrarozvědka_desc">Od doby co jsi poznal všechny skryté uživatele fitušky Tě nic nemůže překvapit. Fórum se pro Tebe zase stalo hostinným prostředím.</string>
+    <string name="Profesor_desc">Objevil jsi celý areál FIT! Katedra \"samočinných počítačů\" byla do areálu Božetěchova 2 přesunuta z elektrotechnické fakulty na Antonínská 1 (dnešní rektorát VUT) v roce 1968 (objekt získalo VUT v roce 1963 ve značně zchátralém stavu). Dnes je celková užitná plocha 17 280m2 z toho výuková 12 323m2. Celkem je v posluchárnách na fakultě 880 míst.</string>
+    <string name="Docent_desc">Objevil jsi vše v budově Božetěchova 1. FIT se o tyto prostory rozšířil v roce 2006. Stavba nové budovy spolu s rekontrukcí kláštera stála 700mil. kč.</string>
+    <string name="Renesanční_osobnost_desc">Prokázal jsi heroické schopnosti, když jsi pochopil všechny vědomosti FITu. K tomu Ti dopomohlo objevení všech vedoucích jednotlivých ústavů.</string>
+    <string name="Znalý_světa_desc">Program ERASMUS Ti rozšířil obzory.</string>
+    <string name="Apatie_k_budoucímu_studiu_desc">Po důkladném prozkoumání areálu jsi zjistit, že být doktorantem nemusí být zrovna med.</string>
+    <string name="Sympatie_k_budoucímu_studiu_desc">Objevil jsi všechna místa, kde se dá na fakultě sehnat medicína, která vyřeší všechny Tvé problémy.</string>
+    <string name="Zelenáč_desc">Jsi na správné cestě. Ve své sbírce máš druhého proděkana.</string>
     
     <!-- Room names -->
     <string name="A003N">Sklep</string>
@@ -140,4 +153,10 @@
     <string name="P209D">Nekřesťansky skvělá jídla za nekřesťansky nízké ceny. Cena jednoho jídla v menze se počítá podle vzorce C = (c - d + 29) * 1.2 + 0.49 Kč, kde c jsou náklady na potraviny v jedné porci a d je dotace (17,45).</string>
     <string name="S202D">Koordinátor zahraniční mobility.</string>
       
+    <string-array name="langs_array">
+        <item>English EN</item>
+        <item>Czech CS</item>
+    </string-array>
+    <string name="pick_language">Vyber si jazyk</string>
+    
 </resources>

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -73,20 +72,6 @@ public class AwardAdapter extends BaseAdapter
     }
     
     return av;
-  }
-  
-  /**
-   * Show information about Award at position
-   * @param position
-   */
-  public void showInfo(int position)
-  {
-    Log.i("AwardAdapter", "INFO FOR Award " + String.valueOf(position) + " ?? " + awards.get(position).name);
-    BlbecekApp app = (BlbecekApp)context;
-    if(!app.userData.hasAward(awards.get(position).name))
-      return;
-    // TODO make dialog
-    Log.i("AwardAdapter", "INFO FOR Award " + String.valueOf(position));
   }
 
 }

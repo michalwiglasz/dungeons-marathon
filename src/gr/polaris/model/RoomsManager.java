@@ -25,6 +25,7 @@ public class RoomsManager
 	public RoomsManager(BlbecekApp context)
 	{
 	  app = context;
+	  context.getResources();
 /*	
 		data = new ArrayList<ArrayList<String> >();
 		
@@ -70,14 +71,14 @@ public class RoomsManager
 		
 		
     awards = new ArrayList<Award>();
-    awards.add(new Award("Kontrarozvědka", app.getString(R.string.Kontrarozvědka), Arrays.asList("C234")));
-    awards.add(new Award("Profesor", app.getString(R.string.Profesor), Arrays.asList("A003", "A204", "A205", "A308", "C008", "C109", "C114", "C204", "C206", "C215", "C216", "C226", "C232", "C234", "D0206", "D0207", "D105", "E104", "E105", "E106", "E112", "F120", "G108", "H1", "J105", "L022", "L104", "L125", "L129", "L205", "L221.1", "L221.2", "L224", "L322", "L333", "L335", "L339", "M209", "P108", "P209", "S202")));
-    awards.add(new Award("Docent", app.getString(R.string.Docent), Arrays.asList("L022", "L104", "L125", "L129", "L205", "L221.1", "L221.2", "L224", "L322", "L333", "L335", "L339", "M209", "P108", "P209", "S202")));
-    awards.add(new Award("Renesanční osobnost", app.getString(R.string.Renesanční_osobnost), Arrays.asList("C226", "A205", "L322", "L221.2")));
-    awards.add(new Award("Znalý světa", app.getString(R.string.Znalý_světa), Arrays.asList("F120")));
-    awards.add(new Award("Apatie k budoucímu studiu", app.getString(R.string.Apatie_k_budoucímu_studiu), Arrays.asList("L205")));
-    awards.add(new Award("Sympatie k budoucímu studiu", app.getString(R.string.Sympatie_k_budoucímu_studiu), Arrays.asList("P108", "E106", "C008", "A003")));
-    awards.add(new Award("Zelenáč", app.getString(R.string.Zelenáč), Arrays.asList("L333")));
+    awards.add(new Award(app.getString(R.string.Zelenáč), app.getString(R.string.Zelenáč_desc), Arrays.asList("L333")));
+    awards.add(new Award(app.getString(R.string.Apatie_k_budoucímu_studiu), app.getString(R.string.Apatie_k_budoucímu_studiu_desc), Arrays.asList("L205")));
+    awards.add(new Award(app.getString(R.string.Kontrarozvědka), app.getString(R.string.Kontrarozvědka_desc), Arrays.asList("C234")));
+    awards.add(new Award(app.getString(R.string.Znalý_světa), app.getString(R.string.Znalý_světa_desc), Arrays.asList("F120")));
+    awards.add(new Award(app.getString(R.string.Renesanční_osobnost), app.getString(R.string.Renesanční_osobnost_desc), Arrays.asList("C226", "A205", "L322", "L221.2")));
+    awards.add(new Award(app.getString(R.string.Sympatie_k_budoucímu_studiu), app.getString(R.string.Sympatie_k_budoucímu_studiu_desc), Arrays.asList("P108", "E106", "C008", "A003")));
+    awards.add(new Award(app.getString(R.string.Docent), app.getString(R.string.Docent_desc), Arrays.asList("L022", "L104", "L125", "L129", "L205", "L221.1", "L221.2", "L224", "L322", "L333", "L335", "L339", "M209", "P108", "P209", "S202")));
+    awards.add(new Award(app.getString(R.string.Profesor), app.getString(R.string.Profesor_desc), Arrays.asList("A003", "A204", "A205", "A308", "C008", "C109", "C114", "C204", "C206", "C215", "C216", "C226", "C232", "C234", "D0206", "D0207", "D105", "E104", "E105", "E106", "E112", "F120", "G108", "H1", "J105", "L022", "L104", "L125", "L129", "L205", "L221.1", "L221.2", "L224", "L322", "L333", "L335", "L339", "M209", "P108", "P209", "S202")));
 		
 	
     rooms = new HashMap<String, Room>();

@@ -6,14 +6,23 @@ import gr.polaris.model.ImageUpload;
 
 import java.io.File;
 import java.util.List;
+import java.util.Locale;
+import java.util.Random;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +38,8 @@ public abstract class BaseActivity extends Activity
   private static final String LOG_TAG                 = "BaseActivity";
 
   protected static final int  SCAN_IMAGE_REQUEST_CODE = 101;
+  
+  public static int localeChanged;
 
   /**
    * Check and return proper folder for Application (will be created)
@@ -79,14 +90,6 @@ public abstract class BaseActivity extends Activity
           Log.e(LOG_TAG, "fileUri us null!");
           return;
         }
-        // Show main activity
-        if (this.getClass() != MainActivity.class)
-        {
-          Intent i = new Intent(this, MainActivity.class);
-          i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-          Log.i(LOG_TAG, "Starting MainActivity class");
-          startActivity(i);
-        }
         // Toast t = Toast.makeText(getApplicationContext(),
         // "Image saved to " + fileUri.getPath(), Toast.LENGTH_SHORT);
         // t.show();
@@ -96,8 +99,8 @@ public abstract class BaseActivity extends Activity
         // ImageUpload iu = new
         // ImageUpload("http://lugano.michalwiglasz.cz:5000/img");
         ImageUpload iu = new ImageUpload((BlbecekApp) getApplication(),
-//            "http://lugano.michalwiglasz.cz:5000/img");
-          "http://fit.mikita.eu/upload.php");
+          "http://lugano.michalwiglasz.cz:5000/img");
+        // "http://fit.mikita.eu/upload.php");
         try
         {
           iu.sendImage(((BlbecekApp) getApplication()).fileUri.getPath());
@@ -108,11 +111,18 @@ public abstract class BaseActivity extends Activity
             Toast t = Toast.makeText(getApplicationContext(), "Image was not recognized",
               Toast.LENGTH_LONG);
             t.show();
+
+            // TODO play song...
+            MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.negativ);
+            mediaPlayer.start();
+
             return;
           }
         } catch (RuntimeException e)
         {
           Log.e(LOG_TAG, "Runtime exception: " + e.getMessage(), e);
+          MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.negativ);
+          mp.start();
           return;
         }
 
@@ -124,11 +134,10 @@ public abstract class BaseActivity extends Activity
 
   public void checkRoom(String room)
   {
-    
     BlbecekApp app = (BlbecekApp) getApplication();
     TextView tvd = (TextView) findViewById(R.id.text_desc);
     // TODO should never be null!
-    if(tvd != null)
+    if (tvd != null)
       tvd.setText("");
 
     // TODO debug it...
@@ -180,6 +189,23 @@ public abstract class BaseActivity extends Activity
       Toast t = Toast.makeText(getApplicationContext(), "The combination is not allowed",
         Toast.LENGTH_LONG);
       t.show();
+
+      Random r = new Random();
+      int sid = R.raw.taunt1;
+      switch (r.nextInt(3))
+      {
+        case 0:
+          sid = R.raw.taunt1;
+          break;
+        case 1:
+          sid = R.raw.taunt2;
+          break;
+        case 2:
+          sid = R.raw.taunt3;
+          break;
+      }
+      MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), sid);
+      mediaPlayer.start();
     }
     else
     {
@@ -196,9 +222,11 @@ public abstract class BaseActivity extends Activity
         app.userData.addUnlocked(s);
         rooms += s + ", ";
       }
-      if(app.rooms.testAward(app.userData))
+      if (app.rooms.testAward(app.userData))
       {
         // TODO play song...
+        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.award);
+        mediaPlayer.start();
       }
       // ((ArrayList<String>) rooms).;
       // Show rooms
@@ -234,6 +262,12 @@ public abstract class BaseActivity extends Activity
    */
   public void scanImage(View view)
   {
+    if (this.getClass() != MainActivity.class)
+    {
+      showMainActivity(null);
+      return;
+    }
+
     BlbecekApp app = (BlbecekApp) getApplication();
     Intent in = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
     app.fileUri = getImageFileUri();
@@ -278,4 +312,71 @@ public abstract class BaseActivity extends Activity
     startActivity(i);
     // i.
   }
+
+  /**
+   * Options menu item selected
+   */
+  public boolean onOptionsItemSelected(MenuItem item)
+  {
+    switch (item.getItemId())
+    {
+      case R.id.menu_main:
+        showMainActivity(null);
+        return true;
+      case R.id.menu_rooms:
+        showRoomsActivity(null);
+        return true;
+      case R.id.menu_awards:
+        showAwardsActivity(null);
+        return true;
+      case R.id.menu_restart:
+        BlbecekApp app = (BlbecekApp) getApplication();
+        app.userData.clean();
+        Toast t = Toast
+          .makeText(getApplicationContext(), R.string.restart_text, Toast.LENGTH_SHORT);
+        t.show();
+        return true;
+//      case R.id.menu_languages:
+//        // TODO languages...
+//        Log.i(LOG_TAG, "Zmena jazyka...");
+//        changeLanguage();
+//        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
+  }
+  
+  public void changeLanguage()
+  {
+    // TODO create dialog with languages...
+    AlertDialog.Builder adb = new AlertDialog.Builder(this);
+    adb.setTitle(R.string.pick_language);
+    adb.setItems(R.array.langs_array, new DialogInterface.OnClickListener()
+    {
+      
+      public void onClick(DialogInterface dialog, int which)
+      {
+        // TODO Auto-generated method stub
+        String[] langs = getResources().getStringArray(R.array.langs_array);
+        String lang = langs[which];
+        lang = lang.substring(lang.lastIndexOf(' ')).toLowerCase();
+        Log.i("Language", "Selected " + lang);
+        
+        Resources res = getBaseContext().getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = new Locale(lang);
+        Log.i("Language", "Selected " + conf.locale.toString());
+        res.updateConfiguration(conf, dm);
+        BaseActivity.localeChanged = 5;
+        dialog.cancel();
+      }
+    });
+    AlertDialog ad = adb.create();
+    Log.i(LOG_TAG, "Before show dialog");
+    ad.show();
+    Log.i(LOG_TAG, "After show dialog");
+    this.onResume();
+  }
+
 }
