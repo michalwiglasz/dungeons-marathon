@@ -15,5 +15,6 @@
     <!-- Rooms Activity texts -->
     <string name="rooms_subtitle">Your unlocked rooms:</string>
     <!-- Awards Activity texts -->
+    <string name="awards_subtitle">Your awards for achievements :</string>
 
 </resources>

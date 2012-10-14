@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import gr.polaris.R;
 import gr.polaris.application.BlbecekApp;
+import gr.polaris.model.RoomsAdapter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,19 +37,21 @@ public class RoomsActivity extends BaseActivity
     roomsList = (ListView) findViewById(R.id.roomsList);
 
     Log.i("RoomsActivity", app.userData.getUnlockedRooms().toString());
-    ArrayList<String> rr = (ArrayList<String>) app.userData.getUnlockedRooms().clone();
-    String[] rooms = new String[rr.size()];
-    rooms = rr.toArray(rooms);
+    //ArrayList<String> rr = (ArrayList<String>) app.userData.getUnlockedRooms().clone();
+    //String[] rooms = new String[rr.size()];
+    //rooms = rr.toArray(rooms);
 
-    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-      android.R.layout.simple_list_item_1, rooms);
+    //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+    //  android.R.layout.simple_list_item_1, rooms);
+    RoomsAdapter adapter = new RoomsAdapter(getApplicationContext(), app.userData.getUnlockedRooms());
     roomsList.setAdapter(adapter);
     roomsList.setOnItemClickListener(new OnItemClickListener()
     {
       public void onItemClick(AdapterView<?> a, View v, int pos, long id)
       {
         // TODO Auto-generated method stub
-        Toast.makeText(getBaseContext(), "Clicked " + String.valueOf(id), Toast.LENGTH_LONG).show();
+        //Toast.makeText(getBaseContext(), "Clicked " + String.valueOf(id), Toast.LENGTH_LONG).show();
+        ((RoomsAdapter)a.getAdapter()).showInfo(pos);
       }
     });
   }

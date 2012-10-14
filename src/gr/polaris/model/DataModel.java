@@ -4,12 +4,9 @@ import java.util.ArrayList;
 
 public class DataModel
 {
-
   private ArrayList<String> unlockedRooms;
 
   private ArrayList<String> awards;
-
-  // private ArrayList<ArrayList<String>> ttt;
 
   public DataModel()
   {
@@ -25,6 +22,13 @@ public class DataModel
   {
     // Insert elementary objects to opened
     unlockedRooms.add("L224"); // Herout
+    unlockedRooms.add("C215"); // Herout
+    unlockedRooms.add("C204"); // Herout
+    unlockedRooms.add("A208"); // Herout
+    unlockedRooms.add("L333"); // Herout
+    unlockedRooms.add("L129"); // Herout
+    unlockedRooms.add("C216"); // Herout
+    unlockedRooms.add("C232"); // Herout
   }
 
   /**

@@ -12,18 +12,21 @@
 
     <TextView
         android:id="@+id/text_roomA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"  />
 
     <TextView
         android:id="@+id/text_roomB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"  />
 
     <TextView
         android:id="@+id/text_desc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"  />
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -32,7 +35,8 @@
         style="@android:style/ButtonBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:minHeight="20.0px" >
 
         <Button
             android:id="@+id/scanButton"

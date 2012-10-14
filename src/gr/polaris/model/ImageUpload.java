@@ -66,7 +66,7 @@ public class ImageUpload implements Runnable
     run();
   }
 
-  public void run()
+  public void run2()
   {
     try
     {
@@ -97,7 +97,7 @@ public class ImageUpload implements Runnable
     }
   }
 
-  public void run2()
+  public void run()
   {
     try
     {

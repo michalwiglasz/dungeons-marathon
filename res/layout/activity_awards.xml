@@ -5,14 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <!--
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-    -->
-
     <TextView
-        android:id="@+id/main_text"
-        android:layout_width="wrap_content"
+        android:id="@+id/text_awards"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/awards_subtitle"
+        android:textSize="25sp" />
+
+    <ListView
+        android:id="@+id/awardsList"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 
     <LinearLayout
@@ -22,6 +24,7 @@
         style="@android:style/ButtonBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:minHeight="20.0px"
         android:orientation="horizontal" >
 
         <Button
@@ -31,7 +34,8 @@
             android:layout_gravity="bottom"
             android:layout_weight="1"
             android:onClick="scanImage"
-            android:text="@string/menu_scan" />
+            android:text="@string/menu_scan"
+            android:minHeight="20.0px" />
 
         <Button
             android:id="@+id/mainButton"

@@ -17,9 +17,9 @@ public class RoomsManager
 			{{""}, {""}, {""}},
 			};
 */
-	ArrayList<Item> data;
-	ArrayList<Award> awards;
-	ArrayList<Room> rooms;
+	private ArrayList<Item> data;
+	private ArrayList<Award> awards;
+	private HashMap<String, Room> rooms;
 	
 	public RoomsManager(BlbecekApp context)
 	{
@@ -167,6 +167,16 @@ public class RoomsManager
         
         return res;
 	}
+  
+  public ArrayList<Award> getAwards()
+  {
+    return awards;
+  }
+  
+  public ArrayList<Room> getRooms()
+  {
+    return rooms;
+  }
 	
 	
 	public void test() {

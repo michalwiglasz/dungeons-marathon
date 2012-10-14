@@ -80,6 +80,14 @@ public abstract class BaseActivity extends Activity
           Log.e(LOG_TAG, "fileUri us null!");
           return;
         }
+        // Show main activity
+        if (this.getClass() != MainActivity.class)
+        {
+          Intent i = new Intent(this, MainActivity.class);
+          i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+          Log.i(LOG_TAG, "Starting MainActivity class");
+          startActivity(i);
+        }
         // Toast t = Toast.makeText(getApplicationContext(),
         // "Image saved to " + fileUri.getPath(), Toast.LENGTH_SHORT);
         // t.show();
@@ -88,7 +96,9 @@ public abstract class BaseActivity extends Activity
         // http://lugano.michalwiglasz.cz/maraton.txt
         // ImageUpload iu = new
         // ImageUpload("http://lugano.michalwiglasz.cz:5000/img");
-        ImageUpload iu = new ImageUpload("http://fit.mikita.eu/upload.php");
+        ImageUpload iu = new ImageUpload((BlbecekApp) getApplication(),
+//            "http://lugano.michalwiglasz.cz:5000/img");
+          "http://fit.mikita.eu/upload.php");
         try
         {
           iu.sendImage(((BlbecekApp) getApplication()).fileUri.getPath());
@@ -115,8 +125,12 @@ public abstract class BaseActivity extends Activity
 
   public void checkRoom(String room)
   {
+    
     BlbecekApp app = (BlbecekApp) getApplication();
     TextView tvd = (TextView) findViewById(R.id.text_desc);
+    // TODO should never be null!
+    if(tvd != null)
+      tvd.setText("");
 
     // TODO debug it...
     // TextView tv = (TextView) findViewById(R.id.main_text);
@@ -182,6 +196,10 @@ public abstract class BaseActivity extends Activity
       {
         app.userData.addUnlocked(s);
         rooms += s + ", ";
+      }
+      if(app.rooms.testAward(app.userData))
+      {
+        // TODO play song...
       }
       // ((ArrayList<String>) rooms).;
       // Show rooms

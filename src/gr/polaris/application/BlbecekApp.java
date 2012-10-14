@@ -25,7 +25,7 @@ public final class BlbecekApp extends Application
   public BlbecekApp()
   {
     userData = new DataModel();
-    rooms = new RoomsManager();
+    rooms = new RoomsManager(this);
     roomA = roomB = "";
   }
 }
