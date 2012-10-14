@@ -5,11 +5,6 @@ import gr.polaris.application.BlbecekApp;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.media.AudioManager;
-import android.media.AudioTrack;
-import android.media.MediaPlayer;
-import android.media.SoundPool;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;

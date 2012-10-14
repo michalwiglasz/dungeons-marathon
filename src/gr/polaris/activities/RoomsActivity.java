@@ -1,7 +1,5 @@
 package gr.polaris.activities;
 
-import java.util.ArrayList;
-
 import gr.polaris.R;
 import gr.polaris.application.BlbecekApp;
 import gr.polaris.model.RoomsAdapter;
@@ -10,9 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 /**
  * 

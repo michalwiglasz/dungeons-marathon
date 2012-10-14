@@ -1,20 +1,143 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <string name="app_name">Blbeček</string>
-    <string name="menu_settings">Settings</string>
-    <string name="menu_scan">Scan</string>
-    <string name="menu_main">Main</string>
-    <string name="menu_rooms">Rooms</string>
-    <string name="menu_awards">Awards</string>
+    <string name="menu_settings">Nastavení</string>
+    <string name="menu_scan">Sken</string>
+    <string name="menu_main">Domů</string>
+    <string name="menu_rooms">Místnosti</string>
+    <string name="menu_awards">Ocenění</string>
     <string name="title_activity_main">Blbecek</string>
-    <string name="title_activity_rooms">Rooms</string>
-    <string name="title_activity_awards">Awards</string>
+    <string name="title_activity_rooms">Místnosti</string>
+    <string name="title_activity_awards">Ocenění</string>
     <!-- Main Activity texts -->
-    <string name="main_roomA">First room: </string>
-    <string name="main_roomB">Second room: </string>
+    <string name="main_roomA">První místnost: </string>
+    <string name="main_roomB">Druhá místnost: </string>
     <!-- Rooms Activity texts -->
-    <string name="rooms_subtitle">Your unlocked rooms:</string>
-    <!-- Awards Activity texts -->
-    <string name="awards_subtitle">Your awards for achievements :</string>
+    <string name="rooms_subtitle">Odemčené místnosti:</string>
+    <!-- Rooms Activity texts -->
+    <string name="awards_subtitle">Získaná ocenění:</string>
+    
+    <!-- Data function descriptions -->
+    <string name="L224">Doc. Herout stvořil maraton a proto vytváří i základní stavební kameny naší hry.</string>
+    <string name="E106A308">Bakaláři (které \"vede\" proděkan Křena) jsou povyšováni do vyšších stavů (ty \"spravuje\" proděkan Růžička) za pomoci insignie, která se často ocitá v rukou pana Juřička.</string>
+    <string name="L333E106">Magistři (které \"vede\" proděkan Růžička) jsou povyšováni do vyšších stavů (ty \"spravuje\" proděkan Hruška) za pomoci insignie, která se často ocitá v rukou pana Juřička.</string>
+    <string name="C232C215">Minulý a nýnější děkan naší fakulty reprezentují funkci děkana.</string>
+    <string name="C215C204">Vědecký pracovník si ve funkci děkana volí pracovní tým proděkanů a dalších pracovníků na své volební období.</string>
+    <string name="C204C206">Tajemník FITu je pověřen děkanem o správu majetku školy.</string>
+    <string name="S202L221_1">Proděkan Zemčík vyřeší spoustu zahraničních problémů. Společně s doc. Drahanským jsou vskutku schopni komunikovat i s (Jižní?) Koreou. Většinu záležitostí ale stejně vyřešítě u Ing. Studené.</string>
+    <string name="P209L104">Stačí Vám průměrné jídlo z menzy a líbí se Vám v naší kavárně? Potom je pro Vás (nyní již zavřená) restaurace v areálu FIT jako stvořená.</string>
+    <string name="D105E112">Obě naše velké a honosné přednáškové místnosti by dosahovaly bezmála polovičních kvalit, kdyby (ne)bylo možné z nich sledovat online stream na kolejích a záznamy (ne)zrychleně před zkouškou. Nejen od tohoto je na fakultě Mgr. Skokanová, která se o vše postará.</string>
+    <string name="L125D105">Stream umožňuje spojit místnost D105 s menšími D0206 a D0207.</string>
+    <string name="L125E112">Stream umožňuje spojit místnost E112 s menší E104 a do začátku tohoto semestru bylo možné využívat i E105 (problém se \"nedaří lokalizovat\").</string>
+    <string name="L129L125">Jak již bylo řečeno, video streaming je velkou (zho|chlo)ubou naší fakulty. K jeho provozu jsou nutné video servery a komunikace mezi pracovníky CVT. Jako sklad videozáznamů slouží 8 videoserverů s celkovou kapacitou 125TB dat (právě v srpnu 2012 byla kapacita zvětšena skoro o 50%).</string>
+    <string name="L129L022">Mnoho serverů spolu s houževnatým nasazením pracovníků umožňuje provozovat rozsáhlé prostory CVT.</string>
+    <string name="G108L224">Pozvání od zástupce vedoucího UPGM doc. Herouta do krásné konferenční místnosti G108 nemůže žádný jiný zástupce vedoucího ústavu odmítnout.</string>
+    <string name="P108C216">Kariérní postup na vedoucího ústavu provede každý zástupce ústavu nejlépe na oslavě v restauraci, rautu v restauraci, obědu v restauraci a nebo večeři v restauraci (restaurace na FIT byla zrušena, nedá se proto počítat s mnoha změnami ve vedení).</string>
+    <string name="P108A204">Kariérní postup na vedoucího ústavu provede každý zástupce ústavu nejlépe na oslavě v restauraci, rautu v restauraci, obědu v restauraci a nebo večeři v restauraci (restaurace na FIT byla zrušena, nedá se proto počítat s mnoha změnami ve vedení).</string>
+    <string name="P108L335">Kariérní postup na vedoucího ústavu provede každý zástupce ústavu nejlépe na oslavě v restauraci, rautu v restauraci, obědu v restauraci a nebo večeři v restauraci (restaurace na FIT byla zrušena, nedá se proto počítat s mnoha změnami ve vedení).</string>
+    <string name="P108L224">Kariérní postup na vedoucího ústavu provede každý zástupce ústavu nejlépe na oslavě v restauraci, rautu v restauraci, obědu v restauraci a nebo večeři v restauraci (restaurace na FIT byla zrušena, nedá se proto počítat s mnoha změnami ve vedení).</string>
+    <string name="L221_2C232">Proděkanovi pro doktorské studium a vedoucímu UPGM se povedlo vměstnat 14 doktorandů do jedné místnosti. Obdivuhodný výkon.</string>
+    <string name="C232C216">O našeho oblíbeného Petra \"S3rváce\" Zemka se starají jeho školitel prof. Meduna a prof. proděkan doktorského studia prof. Hruška.</string>
+    <string name="C216C114">Profesor Meduna spolu s literaturou, která je samozřejmě dostupná v naší knihovně, pravidelně recituje v malebných prostorách vinárny a sklepa.</string>
+    <string name="M209L224">Je s údivem, že doc. Herout při pravidelných maratonech konaných v prostorách CVT ještě nepřivedl žádného studenta do márnice.</string>
+    <string name="P209L205">Naše menza umí spolu se vstupem z masokombinátu často vyprodukovat velmi kvalitní odpad.</string>
+    <string name="C226A308">Doc. Kolář společně s Dr. Křenou se každoročně postarají o to, že mnoho studentů musí vyhledávat návštěvy studijního oddělení a myslet přitom na márnici.</string>
+    <string name="C109F120">Ve chvíli kdy studentovi FIT nevyhoví studijní oddělení ani Mgr. Studená zbývá terminální možnost a to návštěva Ing. Eysselta.</string>
 
+    <!-- Awards Activity texts -->
+    <string name="Kontrarozvědka">Od doby co jsi poznal všechny skryté uživatele fitušky Tě nic nemůže překvapit. Fórum se pro Tebe zase stalo hostinným prostředím.</string>
+    <string name="Profesor">Objevil jsi celý areál FIT! Katedra \"samočinných počítačů\" byla do areálu Božetěchova 2 přesunuta z elektrotechnické fakulty na Antonínská 1 (dnešní rektorát VUT) v roce 1968 (objekt získalo VUT v roce 1963 ve značně zchátralém stavu). Dnes je celková užitná plocha 17 280m2 z toho výuková 12 323m2. Celkem je v posluchárnách na fakultě 880 míst.</string>
+    <string name="Docent">Objevil jsi vše v budově Božetěchova 1. FIT se o tyto prostory rozšířil v roce 2006. Stavba nové budovy spolu s rekontrukcí kláštera stála 700mil. kč.</string>
+    <string name="Renesanční_osobnost">Prokázal jsi heroické schopnosti, když jsi pochopil všechny vědomosti FITu. K tomu Ti dopomohlo objevení všech vedoucích jednotlivých ústavů.</string>
+    <string name="Znalý_světa">Program ERASMUS Ti rozšířil obzory.</string>
+    <string name="Apatie_k_budoucímu_studiu">Po důkladném prozkoumání areálu jsi zjistit, že být doktorantem nemusí být zrovna med.</string>
+    <string name="Sympatie_k_budoucímu_studiu">Objevil jsi všechna místa, kde se dá na fakultě sehnat medicína, která vyřeší všechny Tvé problémy.</string>
+    <string name="Zelenáč">Jsi na správné cestě. Ve své sbírce máš druhého proděkana.</string>
+    
+    <!-- Room names -->
+    <string name="A003N">Sklep</string>
+    <string name="A204N">Doc. Zbořil</string>
+    <string name="A205N">Doc. Hanáček</string>
+    <string name="A308N">Dr. Křena</string>
+    <string name="C008N">Vinárna</string> 
+    <string name="C109N">Studijní oddělení</string> 
+    <string name="C114N">Knihovna</string>
+    <string name="C204N">Pracovna děkana</string>
+    <string name="C206N">Ing. Bouša</string>
+    <string name="C215N">Doc. Zendulka</string>
+    <string name="C216N">Prof. Meduna</string>
+    <string name="C226N">Doc. Kolář</string>
+    <string name="C232N">Prof. Hruška</string>
+    <string name="C234N">Ing. Zemek</string>
+    <string name="D0206N">Posluchárna</string>
+    <string name="D0207N">Posluchárna</string>
+    <string name="D105N">Posluchárna</string>
+    <string name="E104N">Posluchárna</string>
+    <string name="E105N">Posluchárna</string>
+    <string name="E106N">Pan Juřiček</string>
+    <string name="E112N">Posluchárna</string>
+    <string name="F120N">Ing. Studená</string>
+    <string name="G108N">Zasedací místnost</string>
+    <string name="H1N">Márnice</string>
+    <string name="J105N">Odpady</string>
+    <string name="L022N">Sál serverů</string>
+    <string name="L104N">Kavárna Ventana Café</string>
+    <string name="L125N">Mgr. Skokanová</string>
+    <string name="L129N">Ing. Lampa</string>
+    <string name="L205N">Masokombinát</string>
+    <string name="L221_1N">Doc. Zemčík</string>
+    <string name="L221_2N">Doc. Černocký</string>
+    <string name="L224N">Doc. Herout</string>
+    <string name="L322N">Doc. Kotásek</string>
+    <string name="L333N">Doc. Růžička</string>
+    <string name="L335N">Prof. Sekanina</string>
+    <string name="L339N">Ing. Eysselt</string>
+    <string name="M209N">Vrátnice CVT</string>
+    <string name="P108N">Restaurace</string>
+    <string name="P209N">Menza</string>
+    <string name="S202N">Doc. Drahanský</string>    
+    
+    <!-- Room desc -->
+    <string name="A003D">Sklepní místnost v podzemí FIT. Je přístupná pouze z podzemní chodby, která spojuje obě budovy areálu FIT.</string>
+    <string name="A204D">Zástupce vedoucího UITS.</string>
+    <string name="A205D">Vedoucí UITS. </string>
+    <string name="A308D">Proděkan pro bakalářské studium. Pro zajímavoust pracovna A308 obsahuje postel.</string>
+    <string name="C008D">Přítomnost vína zatím nebyla potvrzena (kavárna to jistí).</string> 
+    <string name="C109D">Nevidím, neslyším, nevím.</string> 
+    <string name="C114D">Knihovna s knížkami.</string>
+    <string name="C204D">Zde pracuje děkan, pšt!</string>
+    <string name="C206D">Tajemník</string>
+    <string name="C215D">Děkan FIT</string>
+    <string name="C216D">Zástupce vedoucího UIFS.</string>
+    <string name="C226D">Vedoucí UIFS</string>
+    <string name="C232D">Proděkan pro doktorské studium.</string>
+    <string name="C234D">S3rvác</string>
+    <string name="D0206D">Nejhlubší posluchárna na FIT o kapacitě 90 míst.</string>
+    <string name="D0207D">Nejhlubší posluchárna na FIT o kapacitě 154 míst.</string>
+    <string name="D105D">Největší posluchárna na FIT o kapacitě 300 míst.</string>
+    <string name="E104D">Posluchárna o kapacitě 72 míst.</string>
+    <string name="E105D">Posluchárna o kapacitě 72 míst.</string>
+    <string name="E106D">Práce všeho druhu denně od sedmi do devíti. Nejznámější klapka na FITu - 1191.</string>
+    <string name="E112D">Nejstarší posluchárna na FIT pro 156 posluchačů.</string>
+    <string name="F120D">Zahraniční oddělení.</string>
+    <string name="G108D">Zasedací místnost G108 patří k nejhezčím na FIT. Nachází se v ní velký oválný stůl. Strop místnosti zdobí restaurovaná barokní klenba.</string>
+    <string name="H1D">Dobová márnice </string>
+    <string name="J105D">Nikdo neví jakého jsou tyto odpady původu.</string>
+    <string name="L022D">Serverovna po rekonstrukci v roce 2012 dokáže uchladit a v případě výpadku elektrické energie i zálohovat zařízení o příkonu až 90kW. Aktuálně obsahuje okolo 1150 výpočetních jader.</string>
+    <string name="L104D">Velmi oblíbené místo některých studentů i věděckých pracovníků.</string>
+    <string name="L125D">Streaming a videozáznamy.</string>
+    <string name="L129D">Správce počítačové sítě FIT.</string>
+    <string name="L205D">Studenti doktorského studia zde předvádí pravidelné heroické výkony. Nejspíše z nedostatku místa jich zde musí přebývat 14 a to na ploše ne větší jako 40m2. Druhým vysvětlením může být chyba v IS FIT.</string>
+    <string name="L221_1D">Proděkan pro vnější vztahy.</string>
+    <string name="L221_2D">Vedoucí UPGM.</string>
+    <string name="L224D">Zástupce vedoucího UPGM.</string>
+    <string name="L322D">Vedoucí UPSY.</string>
+    <string name="L333D">Proděkan pro magisterské studium.</string>
+    <string name="L335D">Zástupce vedoucího UPSY.</string>
+    <string name="L339D">Studijní poradce. Některá písmenka: á, Á, é, É, ě, Ě, í, Í, ó, ú, Ú, ů, Ů, ý, Ý, č, Č, ď, ň, ř, Ř, š, Š, ť, ž, Ž.</string>
+    <string name="M209D">Při průchodu jedině v papučích!</string>
+    <string name="P108D">Od 1.9.2012 je restaurace Starý pivovar z neznámého důvodu uzavřena.</string>
+    <string name="P209D">Nekřesťansky skvělá jídla za nekřesťansky nízké ceny. Cena jednoho jídla v menze se počítá podle vzorce C = (c - d + 29) * 1.2 + 0.49 Kč, kde c jsou náklady na potraviny v jedné porci a d je dotace (17,45).</string>
+    <string name="S202D">Koordinátor zahraniční mobility.</string>
+      
 </resources>

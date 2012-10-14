@@ -4,14 +4,18 @@ import java.util.ArrayList;
 
 public class DataModel
 {
-  private ArrayList<String> unlockedRooms;
+  private ArrayList<Room> unlockedRooms;
+  private ArrayList<String> unlockedRoomsString;
 
   private ArrayList<String> awards;
+  
+  private RoomsManager rm;
 
-  public DataModel()
+  public DataModel(RoomsManager rm)
   {
-    unlockedRooms = new ArrayList<String>();
+    unlockedRooms = new ArrayList<Room>();
     awards = new ArrayList<String>();
+    this.rm = rm;    
     init();
   }
 
@@ -21,14 +25,14 @@ public class DataModel
   public void init()
   {
     // Insert elementary objects to opened
-    unlockedRooms.add("L224"); // Herout
-    unlockedRooms.add("C215"); // Herout
-    unlockedRooms.add("C204"); // Herout
-    unlockedRooms.add("A208"); // Herout
-    unlockedRooms.add("L333"); // Herout
-    unlockedRooms.add("L129"); // Herout
-    unlockedRooms.add("C216"); // Herout
-    unlockedRooms.add("C232"); // Herout
+    addUnlocked("L224"); // Herout
+    addUnlocked("C215");
+    addUnlocked("C204");
+    addUnlocked("A208"); // Herout
+    addUnlocked("L333"); // Herout
+    addUnlocked("L129"); // Herout
+    addUnlocked("C216"); // Herout
+    addUnlocked("C232"); // Herout
   }
 
   /**
@@ -52,7 +56,8 @@ public class DataModel
   {
     if (hasUnlocked(room))
       return false;
-    unlockedRooms.add(room);
+    unlockedRoomsString.add(room);
+    unlockedRooms.add(rm.getRoom(room));
     return true;
   }
 
@@ -65,7 +70,7 @@ public class DataModel
    */
   public boolean hasUnlocked(String room)
   {
-    return unlockedRooms.contains(room);
+    return unlockedRoomsString.contains(room);
   }
 
   public int sizeUnlocked()
@@ -105,8 +110,18 @@ public class DataModel
    * 
    * @return ArrayList<String>
    */
-  public ArrayList<String> getUnlockedRooms()
+  public ArrayList<Room> getUnlockedRooms()
   {
     return unlockedRooms;
+  }
+  
+  /**
+   * Return list of user unlocked rooms
+   * 
+   * @return ArrayList<String>
+   */
+  public ArrayList<String> getUnlockedRoomsString()
+  {
+    return unlockedRoomsString;
   }
 }

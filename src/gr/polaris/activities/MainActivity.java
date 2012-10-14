@@ -1,8 +1,6 @@
 package gr.polaris.activities;
 
 import gr.polaris.R;
-import gr.polaris.model.DataModel;
-import gr.polaris.model.RoomsManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;

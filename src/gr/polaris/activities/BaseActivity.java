@@ -1,13 +1,12 @@
 package gr.polaris.activities;
 
+import gr.polaris.R;
+import gr.polaris.application.BlbecekApp;
+import gr.polaris.model.ImageUpload;
+
 import java.io.File;
 import java.util.List;
 
-import gr.polaris.R;
-import gr.polaris.application.BlbecekApp;
-import gr.polaris.model.DataModel;
-import gr.polaris.model.ImageUpload;
-import gr.polaris.model.RoomsManager;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
