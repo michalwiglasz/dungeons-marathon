@@ -1,0 +1,11 @@
+*.pyc
+contours/*
+gray/*
+new/*
+new2/*
+usr/*
+numbers/*
+results2/*
+
+network.xml
+network_nums.xml
