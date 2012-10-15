@@ -27,13 +27,15 @@ public class DataModel
   {
     // Insert elementary objects to opened
     addUnlocked("L224"); // Herout
+    //addUnlocked("C215");
+    //addUnlocked("C20");
+    addUnlocked("A308");
+    addUnlocked("L333");
+    addUnlocked("E106");
     addUnlocked("C215");
-    addUnlocked("C204");
-    addUnlocked("A308"); // Herout
-    addUnlocked("L333"); // Herout
-    addUnlocked("L129"); // Herout
-    addUnlocked("C216"); // Herout
-    addUnlocked("C232"); // Herout
+    addUnlocked("C226");
+    addUnlocked("C205");
+    
   }
 
   /**

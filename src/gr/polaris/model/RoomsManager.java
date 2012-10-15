@@ -45,9 +45,9 @@ public class RoomsManager
     data.add(new Item("L224", "", new ArrayList<String>(Arrays.asList("A308", "E106", "C215", "L129")), app.getString(R.string.L224))); // Herout -> Křena, Juřiček, Zendulka, Lampa
     data.add(new Item("E106", "A308", new ArrayList<String>(Arrays.asList("L333")), app.getString(R.string.E106A308)));
     data.add(new Item("L333", "E106", new ArrayList<String>(Arrays.asList("C232")), app.getString(R.string.L333E106)));
-    data.add(new Item("C232", "C215", new ArrayList<String>(Arrays.asList("C204")), app.getString(R.string.C232C215)));;
-    data.add(new Item("C215", "C204", new ArrayList<String>(Arrays.asList("L339")), app.getString(R.string.C215C204)));;
-    data.add(new Item("C204", "C206", new ArrayList<String>(Arrays.asList("G108", "P209", "L104", "E112" ,"D105", "C114")), app.getString(R.string.C204C206)));;
+    data.add(new Item("C232", "C215", new ArrayList<String>(Arrays.asList("C205")), app.getString(R.string.C232C215)));;
+    data.add(new Item("C215", "C205", new ArrayList<String>(Arrays.asList("L339")), app.getString(R.string.C215C204)));;
+    data.add(new Item("C205", "C206", new ArrayList<String>(Arrays.asList("G108", "P209", "L104", "E112" ,"D105", "C114")), app.getString(R.string.C204C206)));;
     data.add(new Item("S202", "L221.1", new ArrayList<String>(Arrays.asList("F120")), app.getString(R.string.S202L221_1)));;
     data.add(new Item("P209", "L104", new ArrayList<String>(Arrays.asList("P108")), app.getString(R.string.P209L104)));;
     data.add(new Item("D105", "E112", new ArrayList<String>(Arrays.asList("L125")), app.getString(R.string.D105E112)));;
@@ -78,7 +78,7 @@ public class RoomsManager
     awards.add(new Award(app.getString(R.string.Renesanční_osobnost), app.getString(R.string.Renesanční_osobnost_desc), Arrays.asList("C226", "A205", "L322", "L221.2")));
     awards.add(new Award(app.getString(R.string.Sympatie_k_budoucímu_studiu), app.getString(R.string.Sympatie_k_budoucímu_studiu_desc), Arrays.asList("P108", "E106", "C008", "A003")));
     awards.add(new Award(app.getString(R.string.Docent), app.getString(R.string.Docent_desc), Arrays.asList("L022", "L104", "L125", "L129", "L205", "L221.1", "L221.2", "L224", "L322", "L333", "L335", "L339", "M209", "P108", "P209", "S202")));
-    awards.add(new Award(app.getString(R.string.Profesor), app.getString(R.string.Profesor_desc), Arrays.asList("A003", "A204", "A205", "A308", "C008", "C109", "C114", "C204", "C206", "C215", "C216", "C226", "C232", "C234", "D0206", "D0207", "D105", "E104", "E105", "E106", "E112", "F120", "G108", "H1", "J105", "L022", "L104", "L125", "L129", "L205", "L221.1", "L221.2", "L224", "L322", "L333", "L335", "L339", "M209", "P108", "P209", "S202")));
+    awards.add(new Award(app.getString(R.string.Profesor), app.getString(R.string.Profesor_desc), Arrays.asList("A003", "A204", "A205", "A308", "C008", "C109", "C114", "C205", "C206", "C215", "C216", "C226", "C232", "C234", "D0206", "D0207", "D105", "E104", "E105", "E106", "E112", "F120", "G108", "H1", "J105", "L022", "L104", "L125", "L129", "L205", "L221.1", "L221.2", "L224", "L322", "L333", "L335", "L339", "M209", "P108", "P209", "S202")));
 		
 	
     rooms = new HashMap<String, Room>();
@@ -89,7 +89,7 @@ public class RoomsManager
     rooms.put("C008", new Room("C008", app.getString(R.string.C008N), app.getString(R.string.C008D))); //???
     rooms.put("C109", new Room("C109", app.getString(R.string.C109N), app.getString(R.string.C109D))); //???
     rooms.put("C114", new Room("C114", app.getString(R.string.C114N), app.getString(R.string.C114D)));
-    rooms.put("C204", new Room("C204", app.getString(R.string.C204N), app.getString(R.string.C204D)));
+    rooms.put("C205", new Room("C205", app.getString(R.string.C204N), app.getString(R.string.C204D)));
     rooms.put("C206", new Room("C206", app.getString(R.string.C206N), app.getString(R.string.C206D)));
     rooms.put("C215", new Room("C215", app.getString(R.string.C215N), app.getString(R.string.C215D)));
     rooms.put("C216", new Room("C216", app.getString(R.string.C216N), app.getString(R.string.C216D)));
